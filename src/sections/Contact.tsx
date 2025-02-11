@@ -15,7 +15,7 @@ interface SocialContactProps {
 
 const SocialContactContainer = ({ key, name, link, icon, username }: SocialContactProps) => {
   return (
-    <div id={`socialcontactcontainer${key}`} className={styles["social-contact"]}>
+    <div key={key} className={styles["social-contact"]}>
       <a href={link} target="_blank">
         <div className={styles["social-link"]}>
           <Image
