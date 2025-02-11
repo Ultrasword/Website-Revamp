@@ -1,0 +1,49 @@
+@import url("https://cdn.jsdelivr.net/npm/@github/mona-sans/css/mona-sans.css");
+
+:root {
+  --default-font: "MonaSpace", monospace;
+
+  --primary-color-one-light: #00a5fd;
+  --primary-color-two-light: #7694ff;
+
+  --primary-color-one-dark: #0181d9;
+  --primary-color-two-dark: #0024aa;
+
+  --section-title-size: 28px;
+  --section-title-weight: bold;
+}
+
+/* make every single div object have a box border */
+/* TODO -- remove it later */
+div {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* section template code */
+.section-container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+  padding-bottom: 30px;
+
+  width: 90%;
+}
+
+.section-title {
+  align-self: left;
+  font-size: var(--section-title-size);
+  font-weight: var(--section-title-weight);
+}
+
+/* special text colouring */
+.text-gradient-mask {
+  background: linear-gradient(
+    to right,
+    var(--primary-color-one-light),
+    var(--primary-color-two-light)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
