@@ -38,7 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Development Progression
 
 - made some particels because i saw a friend had them
-  ![day1](docs/01-10-2025_particles.png)
+  ![day1](docs/02-10-2025_particles.png)
 
 - just started development today
   ![day1](docs/02-10-2025_just-started.png)
