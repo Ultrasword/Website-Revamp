@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 import "./Global.css";
 import styles from "./About.module.css";
@@ -22,7 +23,7 @@ export default function AboutSection() {
             </span>
             <br></br>
           </p>
-          <p style={{ paddingBottom: "15px" }}>I'm a bit of a...</p>
+          <p style={{ paddingBottom: "15px" }}>{"I'm a bit of a..."}</p>
           <ul style={{ listStyleType: "none", lineHeight: "0.8", paddingLeft: "10px" }}>
             <li>⛷️ ski lover</li>
             <li>👾 game developer</li>
@@ -41,16 +42,21 @@ export default function AboutSection() {
       <div className={styles["right-container"]}>
         <div className={styles["collage-container"]}>
           {/* insert an image of me?? or a compilation of a few images? */}
-          <img
+            <Image
             src="/collage/circle.jpg"
             alt="circle"
-            style={{ gridArea: "circle", width: "100%", height: "auto" }}
-          />
+            layout="responsive"
+            width={100}
+            height={100}
+            style={{ gridArea: "circle" }}
+            />
           {Array.from({ length: 8 }).map((_, i) => (
-            <img
+            <Image
               key={i}
               src={"/collage/image1.jpg"}
               alt={`image${i}`}
+              width={100}
+              height={100}
               style={{ display: "flex", width: "100%", height: "auto" }}
             />
           ))}

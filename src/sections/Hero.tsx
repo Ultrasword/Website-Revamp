@@ -1,7 +1,8 @@
+
 import "./Global.css";
 import styles from "./Hero.module.css";
 
-import ParticleBackground from "../components/particlesim";
+import ParticleBackground from "@/components/particlesim";
 
 export default function HeroSection() {
   return (
