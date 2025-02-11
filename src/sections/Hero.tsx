@@ -44,7 +44,7 @@ export default function HeroSection() {
               autoStart: true,
               loop: true,
               delay: 50, // Adjust the delay to make the typing faster
-              pauseFor: 3000, // Adjust the pause duration to make it longer
+              // pauseFor: 3000, // Adjust the pause duration to make it longer
             }}
           />
         </div>
