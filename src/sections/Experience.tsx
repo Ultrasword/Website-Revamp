@@ -1,5 +1,5 @@
 export default function ExperienceSection() {
-  const experiences = [];
+  //   const experiences = [];
 
   return (
     <div style={{ height: "300px" }}>

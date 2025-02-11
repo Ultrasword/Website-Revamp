@@ -1,5 +1,5 @@
 export default function ProjectsSection() {
-  const projects = [];
+  //   const projects = [];
 
   return (
     <div style={{ height: "300px" }}>
