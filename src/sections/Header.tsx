@@ -15,7 +15,7 @@ export default function HeaderSection() {
   const names = ["Home", "About", "Contact"];
 
   return (
-    <header id={"Header"} className={styles.header}>
+    <header id={"Home"} className={styles.header}>
       <div>
         <div className={styles.container}>
           <p style={{ fontWeight: "bold", fontSize: "20px" }}>Header</p>

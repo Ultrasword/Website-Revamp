@@ -26,7 +26,7 @@
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
 
-    --button-primary-hover: #ccc;
+    --button-primary-hover: #002132;
     --button-secondary-hover: #1a1a1a;
   }
 }
@@ -37,7 +37,7 @@
   gap: 32px;
   grid-row-start: 2;
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   align-items: center;
   justify-content: center;
 }

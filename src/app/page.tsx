@@ -5,6 +5,8 @@ import HeaderSection from "@/sections/Header";
 import AboutSection from "@/sections/About";
 import ContactSection from "@/sections/Contact";
 import HeroSection from "@/sections/Hero";
+import ProjectSection from "@/sections/Projects";
+import ExperienceSection from "@/sections/Experience";
 
 export default function Home() {
   return (
@@ -13,10 +15,9 @@ export default function Home() {
       <HeroSection />
 
       <main className={styles.main}>
-        <div style={{ border: "1px solid black" }}>Hello World Section 1</div>
-
         <AboutSection />
-
+        <ExperienceSection />
+        <ProjectSection />
         <ContactSection />
       </main>
 
