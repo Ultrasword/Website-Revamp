@@ -53,7 +53,7 @@ const ParticleBackground: React.FC = () => {
       // Clear the canvas on each frame
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      var connections: { particle: Particle; otherParticle: Particle }[] = [];
+      let connections: { particle: Particle; otherParticle: Particle }[] = [];
 
       // Update and draw each particle
       particles.forEach((particle) => {

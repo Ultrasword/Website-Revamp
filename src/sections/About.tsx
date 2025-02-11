@@ -18,7 +18,7 @@ export default function AboutSection() {
                 fontWeight: "bold",
               }}
             >
-              ( ^_^)／
+              {"( ^_^)／"}
             </span>
             <br></br>
           </p>
@@ -48,6 +48,7 @@ export default function AboutSection() {
           />
           {Array.from({ length: 8 }).map((_, i) => (
             <img
+              key={i}
               src={"/collage/image1.jpg"}
               alt={`image${i}`}
               style={{ display: "flex", width: "100%", height: "auto" }}
