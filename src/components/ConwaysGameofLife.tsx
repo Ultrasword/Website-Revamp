@@ -271,7 +271,7 @@ $32b2o5$40bo!
     const rawdata = parseRLE(startingConfig);
 
     // Create a mutable typed array for the texture data.
-    let data = new Uint8ClampedArray(width * height * 4);
+    let data: Uint8ClampedArray = new Uint8ClampedArray(width * height * 4);
     // Fill the array: each pixel is RGBA; live cell => white (255), dead cell => black (0)
     for (let y = 0; y < height; y++) {
       const row = rawdata[y];
@@ -349,7 +349,7 @@ $32b2o5$40bo!
         refContainer.current.removeChild(renderer.domElement);
       }
     };
-  }, []);
+  });
 
   // Render a local container only if a mountNode wasn't provided.
   return <div id={"ConwaysGame"} ref={refContainer} style={{ width: "100%", height: "100%" }} />;
