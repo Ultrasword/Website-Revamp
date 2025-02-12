@@ -1,25 +1,25 @@
 "use client";
 
-import "./Global.css";
+import "@/app/globals.css";
 import styles from "./Hero.module.css";
 
 import TypewriterComponent from "typewriter-effect";
 
-import ParticleBackground from "@/components/particlesim";
+import ParticleBackground from "@/components/ParticleSim";
 
 export default function HeroSection() {
   const titles = [
     "Software Engineer",
     "Full Stack Developer",
-    "Game Developer",
-    "Badminton Demon",
-    "Ski Lover",
+    "BADMINTON DEMON",
+    "SKI LOVER",
     "Cat Owner",
+    "GAME DEVELOPER",
     "Engineering Student",
   ];
 
   return (
-    <div id={"Hero"} style={{ width: "100%" }}>
+    <div id={"Hero"} style={{ width: "100%", top: 0, left: 0 }}>
       <div
         style={{
           maskImage:
@@ -29,24 +29,46 @@ export default function HeroSection() {
           position: "absolute",
           zIndex: -1,
           top: 0,
+          left: 0,
         }}
       >
         <div className={`${styles["hero-background"]} ${styles["hero-background-mask"]}`}>
           <ParticleBackground />
         </div>
       </div>
+
+      {/* text and visuals */}
       <div className={`section-container ${styles["hero-container"]}`} style={{ width: "100%" }}>
-        <div className={styles["hero-container"]}>
-          <h1 style={{ fontWeight: "80px" }}>Peter Zhang</h1>
-          <TypewriterComponent
-            options={{
-              strings: titles,
-              autoStart: true,
-              loop: true,
-              delay: 50, // Adjust the delay to make the typing faster
-              // pauseFor: 3000, // Adjust the pause duration to make it longer
-            }}
-          />
+        <div
+          className={styles["hero-container"]}
+          style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        >
+          <div>
+            <h1
+              style={{
+                fontWeight: "90px",
+                fontSize: "60px",
+                fontFamily: "var(--fancy-font)",
+                margin: "0",
+              }}
+            >
+              Peter Zhang
+            </h1>
+          </div>
+          <div>
+            <div
+              style={{ fontSize: "20px", fontFamily: "var(--subtitle-font)", textAlign: "center" }}
+            >
+              <TypewriterComponent
+                options={{
+                  strings: titles,
+                  autoStart: true,
+                  loop: true,
+                  delay: 50, // Adjust the delay to make the typing faster
+                }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

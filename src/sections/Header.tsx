@@ -2,11 +2,11 @@ import styles from "./Header.module.css";
 
 function HeaderCard(key: number, name: string) {
   return (
-    <div key={key} className={styles.card}>
-      <a href={`#${name}`} style={{ textDecoration: "none" }}>
+    <a href={`#${name}`} style={{ textDecoration: "none" }}>
+      <div key={key} className={styles.card}>
         <p>{name}</p>
-      </a>
-    </div>
+      </div>
+    </a>
   );
 }
 
@@ -16,12 +16,18 @@ export default function HeaderSection() {
 
   return (
     <header id={"Home"} className={styles.header}>
-      <div>
-        <div className={styles.container}>
-          <p style={{ fontWeight: "bold", fontSize: "20px" }}>Header</p>
-          <div style={{ width: "30px" }}></div>
-          <div className={styles.nav}>{names.map((name, key) => HeaderCard(key, name))}</div>
+      <div className={styles.container}>
+        <div>
+          <div className={styles.logo}>
+            <a href={"https://peterzhang.dev"}>
+              <p style={{ fontWeight: "bold", fontSize: "20px" }} className={styles.nav}>
+                peterzhang.dev
+              </p>
+            </a>
+          </div>
         </div>
+        <div style={{ width: "50%" }}></div>
+        <div className={styles.nav}>{names.map((name, key) => HeaderCard(key, name))}</div>
       </div>
     </header>
   );

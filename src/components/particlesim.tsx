@@ -124,8 +124,7 @@ const ParticleBackground: React.FC = () => {
         width: "100%",
         height: "100%",
         // Optional: if you want to keep a gradient as a base background behind the particles
-        background:
-          "linear-gradient(to right, var(--primary-color-one-light), var(--primary-color-two-light))",
+        background: "linear-gradient(to right, var(--primary-color-one), var(--primary-color-two))",
       }}
     />
   );

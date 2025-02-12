@@ -1,16 +1,14 @@
 .hero-container {
-  width: 70%;
+  width: 90%;
   height: 300px;
-  margin: 0 auto;
+  justify-self: center;
+  align-items: center;
   position: relative;
+  padding: 5px;
 }
 
 .hero-background {
-  background: linear-gradient(
-    to right,
-    var(--primary-color-one-light),
-    var(--primary-color-two-light)
-  );
+  background: linear-gradient(to right, var(--primary-color-one), var(--primary-color-two));
   opacity: 1;
   position: absolute;
   top: 0;

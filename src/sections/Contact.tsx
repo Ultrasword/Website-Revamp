@@ -1,9 +1,9 @@
-import "./Global.css";
+import "@/app/globals.css";
 
 import styles from "./Contact.module.css";
 
 import Image from "next/image";
-import ResumeContainer from "@/components/resume";
+import ResumeContainer from "@/components/Resume";
 
 interface SocialContactProps {
   key: number;
@@ -52,12 +52,6 @@ export default function ContactSection() {
       icon: "/icons/github.svg",
       username: "Ultrasword",
     },
-    {
-      name: "YouTube",
-      link: "https://www.youtube.com/@petthepotat",
-      icon: "/icons/youtube.svg",
-      username: "petthepotat",
-    },
   ];
 
   return (
@@ -79,7 +73,7 @@ export default function ContactSection() {
           </div>
         </div>
         <div>
-          <p>
+          <p style={{ alignContent: "center", justifySelf: "center" }}>
             Click my Resume to <b>open up!</b>
           </p>
           <ResumeContainer />
