@@ -214,10 +214,11 @@ $32b2o5$40bo!
 `;
 
   useEffect(() => {
-    if (!refContainer.current) return;
+    const container = refContainer.current;
+    if (!container) return;
     const gamescene = new THREE.Scene();
     const objscene = new THREE.Scene();
-    const { clientWidth, clientHeight } = refContainer.current;
+    const { clientWidth, clientHeight } = container;
 
     // Create cameras.
     const orthoCamera = new THREE.OrthographicCamera(-25, 25, 10, -10, 0.1, 1000);
@@ -344,9 +345,8 @@ $32b2o5$40bo!
     window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      if (refContainer.current) {
-        refContainer.current.removeChild(renderer.domElement);
+      if (container) {
+        container.removeChild(renderer.domElement);
       }
     };
   });
