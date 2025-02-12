@@ -231,7 +231,9 @@ $32b2o5$40bo!
     orthoCamera.position.z = 5;
     perspCamera.position.z = 5;
 
-    refContainer.current.appendChild(renderer.domElement);
+    if (refContainer.current) {
+      refContainer.current.appendChild(renderer.domElement);
+    }
 
     // --- Shader Setup ---
     const vertexShader = `
