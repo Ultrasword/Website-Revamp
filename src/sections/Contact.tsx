@@ -3,7 +3,7 @@ import "@/app/globals.css";
 import styles from "./Contact.module.css";
 
 import Image from "next/image";
-import ResumeContainer from "@/components/Resume";
+import ResumeContainer from "../components/Resume";
 
 interface SocialContactProps {
   key: number;

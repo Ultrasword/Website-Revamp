@@ -5,7 +5,7 @@ import styles from "./Hero.module.css";
 
 import TypewriterComponent from "typewriter-effect";
 
-import ParticleBackground from "@/components/ParticleSim";
+import ParticleBackground from "../components/ParticleSim";
 
 export default function HeroSection() {
   const titles = [
