@@ -386,7 +386,7 @@ o13bo22b2o4b2o9bo$5b3o12bobo21bobo12b3o$4bo9b2o4b2o22bo13bo$4b4o6b3o26b
     return () => {
       colorSchemeQuery.removeEventListener("change", handleColorSchemeChange);
     };
-  }, []);
+  }, [shaderMaterial.uniforms.backColor]);
 
   // Render a local container only if a mountNode wasn't provided.
   return <div id={"ConwaysGame"} ref={refContainer} style={{ width: "100%", height: "100%" }} />;
