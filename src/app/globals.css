@@ -25,17 +25,24 @@ body {
   --foreground: #171717;
 
   --default-font: "MonaSpace", monospace;
-
   --primary-color-one: #00a5fd;
   --primary-color-two: #7694ff;
 
   --secondary-color-one: #00c4fd;
   --secondary-color-two: #769dff;
 
-  --tertiary-color: black;
+  --primary-color-one-rgb: 0, 165, 253;
+  --primary-color-two-rgb: 118, 148, 255;
+
+  --secondary-color-one-rgb: 0, 196, 253;
+  --secondary-color-two-rgb: 118, 157, 255;
+
+  --tertiary-color: white;
 
   --section-title-size: 28px;
   --section-title-weight: bold;
+
+  --default-text: black;
 
   --fancy-font: "MonaSpace Krypton", monospace;
   --subtitle-font: "MonaSpace Argon", monospace;
@@ -44,13 +51,22 @@ body {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
     --primary-color-one: #0181d9;
     --primary-color-two: #002bc4;
 
     --secondary-color-one: #008bff;
     --secondary-color-two: #ff418e;
 
-    --tertiary-color: white;
+    --primary-color-one-rgb: 1, 129, 217;
+    --primary-color-two-rgb: 0, 43, 196;
+
+    --secondary-color-one-rgb: 0, 139, 255;
+    --secondary-color-two-rgb: 255, 65, 142;
+
+    --tertiary-color: black;
+
+    --default-text: white;
   }
 
   html {

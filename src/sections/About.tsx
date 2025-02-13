@@ -5,6 +5,18 @@ import "@/app/globals.css";
 import styles from "./About.module.css";
 
 export default function AboutSection() {
+  const images = [
+    "/collage/gamedev.mp4",
+    "/collage/IMG_6105.JPG",
+    "/collage/gamedev1.png",
+    "/collage/portfolio1.png",
+    "/collage/ski1.png",
+    "/collage/tremblant1.png",
+    "/collage/groupphoto.png",
+    "/collage/IMG_6056.JPG",
+    "/collage/IMG_6169.JPG",
+  ];
+
   return (
     <div
       id={"About"}
@@ -50,23 +62,35 @@ export default function AboutSection() {
       <div className={styles["right-container"]}>
         <div className={styles["collage-container"]}>
           {/* insert an image of me?? or a compilation of a few images? */}
-          <Image
-            src="/collage/circle.jpg"
-            alt="circle"
-            layout="responsive"
-            width={100}
-            height={100}
-            style={{ gridArea: "circle" }}
-          />
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Image
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div
               key={i}
-              src={"/collage/image1.jpg"}
-              alt={`image${i}`}
-              width={100}
-              height={100}
-              style={{ display: "flex", width: "100%", height: "auto" }}
-            />
+              style={{
+                gridArea: i === 0 ? "circle" : "auto",
+                overflow: "hidden",
+                height: "100%",
+                maxHeight: "100%",
+              }}
+            >
+              {images[i].endsWith(".mp4") ? (
+                <video autoPlay muted loop playsInline style={{ width: "100%" }}>
+                  <source src={images[i]} type="video/mp4" />
+                </video>
+              ) : (
+                <Image
+                  src={images[i]}
+                  alt={`image${i}`}
+                  width={500}
+                  height={500}
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              )}
+            </div>
           ))}
         </div>
       </div>

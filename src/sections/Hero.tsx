@@ -9,13 +9,14 @@ import ParticleBackground from "@/components/ParticleSim";
 
 export default function HeroSection() {
   const titles = [
-    "Software Engineer",
-    "Full Stack Developer",
-    "BADMINTON DEMON",
-    "SKI LOVER",
-    "Cat Owner",
-    "GAME DEVELOPER",
-    "Engineering Student",
+    "i think we all know this is hella cliche",
+    "I'm a Software Engineer",
+    "and a Full Stack Developer",
+    "I also love to SKI!",
+    "please don't cringe",
+    "I like making games",
+    "this is in literally every single personal website",
+    "UW for the win!",
   ];
 
   return (

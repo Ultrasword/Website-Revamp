@@ -207,71 +207,87 @@ export default function ConwaysGameofLife() {
   const refContainer = useRef<HTMLDivElement>(null);
 
   // Starting configuration from conwaylife.com (50x20)
-  const startingConfig = `x = 50, y = 20, rule = B3/S23
-$30b2o$30bobo$17bobo13bo7b2o$16bo2bo2b2o6bo2bo7b2o$7b2o6b2o5bobo8bo$7b
-2o4b2o3bo3bo3bo3bobo$15b2o5b3ob2o2b2o$16bo2bo3b2o$17bobo3$33bo$31bobo
-$32b2o5$40bo!
+  const startingConfig = `x = 72, y = 72, rule = B3/S23
+5$28b2o$28bobo$30bo4b2o$26b4ob2o2bo2bo$26bo2bobobobob2o$29bobobobo$30b
+2obobo$34bo2$20b2o$21bo7b2o$21bobo5b2o$22b2o$31b2o$30b3o$31bo3$40bo$32b
+2o7b2o13bo$32bo7b2o12b3o$33b3o17bo$35bo17b2o$20bo$20b2o$19bobo39b2o$62b
+o$4b2o56bob2o$5bo48b2o4b3o2bo$3bo47bo2b2o3bo3b2o$3b5o14b2o26b3o6b4o$8b
+o13bo22b2o4b2o9bo$5b3o12bobo21bobo12b3o$4bo9b2o4b2o22bo13bo$4b4o6b3o26b
+2o14b5o$2b2o3bo3b2o2bo47bo$bo2b3o4b2o48bo$b2obo56b2o$4bo$4b2o39bobo$45b
+2o$46bo$12b2o17bo$13bo17b3o$10b3o12b2o7bo$10bo13b2o7b2o$26bo3$35bo$34b
+3o$34b2o$43b2o$36b2o5bobo$36b2o7bo$45b2o2$32bo$31bobob2o$31bobobobo$28b
+2obobobobo2bo$28bo2bo2b2ob4o$30b2o4bo$36bobo$37b2o!
 `;
 
+  // --- Shader Setup ---
+  const vertexShader = `
+      varying vec2 vUv;
+      uniform float u_time;
+
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `;
+  const fragmentShader = `
+      varying vec2 vUv;
+      uniform float u_time;
+      uniform sampler2D u_texture;
+      uniform vec3 backColor;
+      void main() {
+        vec2 uv = vUv;
+        vec4 texColor = texture2D(u_texture, uv);
+        float gradient = 0.5 + 0.5 * sin(uv.x * 10.0 + u_time);
+        vec3 color = mix(vec3(1.0, 0.254, 0.557), vec3(0.0, 0.141, 0.667), gradient);
+        color = texColor.r > 0.5 ? color : backColor;
+        // color = texColor.r > 0.5 ? color : vec3(1.0, 1.0, 1.0);
+        gl_FragColor = vec4(color, 1.0);
+      }
+    `;
+  const width = 72;
+  const height = 72;
+  const rawdata = parseRLE(startingConfig);
+
+  const shaderMaterial = new THREE.ShaderMaterial({
+    vertexShader,
+    fragmentShader,
+    uniforms: {
+      u_time: { value: 0.0 },
+      u_texture: { value: null },
+      backColor: { value: new THREE.Vector3(0, 0, 0) },
+    },
+  });
+
+  // effect
   useEffect(() => {
     const container = refContainer.current;
     if (!container) return;
     const gamescene = new THREE.Scene();
-    const objscene = new THREE.Scene();
     const { clientWidth, clientHeight } = container;
 
     // Create cameras.
-    const orthoCamera = new THREE.OrthographicCamera(-25, 25, 10, -10, 0.1, 1000);
-    const perspCamera = new THREE.PerspectiveCamera(75, clientWidth / clientHeight, 0.1, 1000);
+    const orthoCamera = new THREE.OrthographicCamera(
+      -width / 2,
+      width / 2,
+      height / 2,
+      -height / 2,
+      0.1,
+      1000
+    );
+    const perspCamera = new THREE.PerspectiveCamera(50, clientWidth / clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
 
     renderer.setSize(clientWidth, clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
     orthoCamera.position.z = 5;
-    perspCamera.position.z = 5;
+    perspCamera.position.z = 4;
 
     if (refContainer.current) {
       refContainer.current.appendChild(renderer.domElement);
     }
 
-    // --- Shader Setup ---
-    const vertexShader = `
-      varying vec2 vUv;
-      uniform float u_time;
-      void main() {
-        vUv = uv;
-        vec3 shiftedPosition = position + vec3(cos(position.x / 5.0 + u_time) * 0.1, sin(u_time) * 0.1, 0.0);
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(shiftedPosition, 1.0);
-      }
-    `;
-    const fragmentShader = `
-      varying vec2 vUv;
-      uniform float u_time;
-      uniform sampler2D u_texture;
-      void main() {
-        vec2 uv = vUv;
-        vec4 texColor = texture2D(u_texture, uv);
-        float gradient = 0.5 + 0.5 * sin(uv.x * 10.0 + u_time);
-        vec3 color = mix(vec3(1.0, 0.254, 0.557), vec3(0.0, 0.141, 0.667), gradient);
-        color = texColor.r > 0.5 ? color : vec3(0.0);
-        gl_FragColor = vec4(color, 1.0);
-      }
-    `;
-    const shaderMaterial = new THREE.ShaderMaterial({
-      vertexShader,
-      fragmentShader,
-      uniforms: {
-        u_time: { value: 0.0 },
-        u_texture: { value: null },
-      },
-    });
-
     // --- Texture and Initial Grid Setup ---
-    // Use the dimensions from the RLE header.
-    const width = 50;
-    const height = 20;
-    const rawdata = parseRLE(startingConfig);
 
     // Create a mutable typed array for the texture data.
     let data: Uint8ClampedArray = new Uint8ClampedArray(width * height * 4);
@@ -299,15 +315,9 @@ $32b2o5$40bo!
     shaderMaterial.uniforms.u_texture.value = texture;
 
     // Create a plane that uses the shader.
-    const gamegeometry = new THREE.PlaneGeometry(width, height);
+    const gamegeometry = new THREE.PlaneGeometry(6, 6);
     const gamemesh = new THREE.Mesh(gamegeometry, shaderMaterial);
     gamescene.add(gamemesh);
-
-    // --- Optional: Add a test cube ---
-    const cubeGeometry = new THREE.BoxGeometry();
-    const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-    objscene.add(cube);
 
     // --- Animation Loop ---
     let lastUpdateTime = 0;
@@ -317,20 +327,25 @@ $32b2o5$40bo!
       requestAnimationFrame(animate);
       const currentTime = performance.now();
       shaderMaterial.uniforms.u_time.value = currentTime / 1000;
+
+      perspCamera.position.x = Math.sin(currentTime / 4000) * 3;
+      perspCamera.position.y = Math.cos(currentTime / 4000) * 3;
+      perspCamera.up.set(0, 0, 1);
+      perspCamera.lookAt(0, 0, 0);
       if (currentTime - lastUpdateTime >= updateInterval) {
         lastUpdateTime = currentTime;
         // Update shader time uniform.
-
-        // Rotate the test cube.
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
 
         // Update the simulation: compute next generation.
         data = simulateGameOfLife(data, width, height);
         texture.image.data = data;
         texture.needsUpdate = true;
       }
-      renderer.render(gamescene, orthoCamera);
+      const backColor = shaderMaterial.uniforms.backColor.value;
+      renderer.setClearColor(new THREE.Color(backColor.x, backColor.y, backColor.z));
+
+      // renderer.render(gamescene, orthoCamera);
+      renderer.render(gamescene, perspCamera);
     };
 
     animate();
@@ -352,6 +367,26 @@ $32b2o5$40bo!
       }
     };
   });
+
+  useEffect(() => {
+    const handleColorSchemeChange = (e: MediaQueryListEvent) => {
+      shaderMaterial.uniforms.backColor.value = e.matches
+        ? new THREE.Vector3(0, 0, 0) // Dark mode
+        : new THREE.Vector3(1, 1, 1); // Light mode
+    };
+
+    const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    colorSchemeQuery.addEventListener("change", handleColorSchemeChange);
+
+    // Set initial backColor based on the current preference
+    shaderMaterial.uniforms.backColor.value = colorSchemeQuery.matches
+      ? new THREE.Vector3(0, 0, 0)
+      : new THREE.Vector3(1, 1, 1);
+
+    return () => {
+      colorSchemeQuery.removeEventListener("change", handleColorSchemeChange);
+    };
+  }, []);
 
   // Render a local container only if a mountNode wasn't provided.
   return <div id={"ConwaysGame"} ref={refContainer} style={{ width: "100%", height: "100%" }} />;

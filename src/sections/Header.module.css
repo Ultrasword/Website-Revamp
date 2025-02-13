@@ -26,6 +26,7 @@
   align-items: center;
 
   font-family: var(--subtitle-font);
+  color: var(--default-text);
   padding: 0;
 }
 
@@ -37,11 +38,28 @@
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
-  color: var(--tertiary-color);
+  color: var(--default-text);
+}
+
+.resumecard {
+  margin: 5px;
+  padding: 5px;
+
+  border-radius: 5px;
+  background-color: var(--primary-color-two);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  color: var(--default-text);
 }
 
 .card:hover {
   transform: scale(1.03);
+  transition: transform 0.2s;
+}
+
+.resumecard:hover {
+  transform: scale(1.03);
+  transition: transform 0.2s;
 }
 
 .logo {
@@ -51,6 +69,7 @@
 
 .logo:hover {
   transform: scale(1.03);
+  transition: transform 0.2s;
 }
 
 .logo > a {

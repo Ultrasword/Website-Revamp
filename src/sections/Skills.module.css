@@ -8,10 +8,11 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  height: 400px;
-  aspect-ratio: 5 / 2;
+  height: 500px;
   position: relative;
   z-index: -1;
+
+  border-radius: 5px;
 }
 
 .skillset-container {
@@ -19,10 +20,10 @@
   flex-direction: column;
   gap: 10px;
 
-  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 
   position: relative;
-  top: -400px;
+  top: -450px;
   width: 100%;
   height: 0px;
   aspect-ratio: 50 / 20;

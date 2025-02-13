@@ -2,7 +2,9 @@
 
 import "@/app/globals.css";
 import styles from "./Skills.module.css";
+
 import ConwaysGameofLife from "@/components/ConwaysGameofLife";
+import SingleCardViewer from "@/components/SingleCardViewer";
 
 export default function SkillsSection() {
   // Store the explicit mount container element from inside the iframe.
@@ -12,29 +14,19 @@ export default function SkillsSection() {
       <div>
         <div>
           <h1>
-            My Special{" "}
-            <span className="text-gradient-mask-p2" data-text="Skills">
-              Skills
-            </span>
+            Professional Activies{" "}
+            <span style={{ fontSize: "15px" }}>{"(it's just previous jobs)"}</span>
           </h1>
-          <p>
-            Here are my main{" "}
-            <span className="text-gradient-mask-p1" data-text="skillsets">
-              <b>skillsets</b>
-            </span>
-            . I&apos;m proud of them.
-          </p>
+          <p>Here&apos;s an extensive list of my previous positions.</p>
         </div>
-        {/* weird overlay time again */}
-        <div>
+        {/* /* weird overlay time again */}
+        <div style={{ borderRadius: "10px", overflow: "hidden" }}>
           <div id="ConwaySim" className={styles["conway-sim-container"]}>
             <ConwaysGameofLife />
           </div>
           <div className={styles["skillset-container"]}>
-            <div className={styles["skillset-card"]}>
-              <p>Information</p>
-              <p>this feels like cheating</p>
-            </div>
+            {/* skills viewer */}
+            <SingleCardViewer />
           </div>
         </div>
       </div>
