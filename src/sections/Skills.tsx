@@ -14,7 +14,7 @@ export default function SkillsSection() {
       <div>
         <div>
           <h1>
-            Professional Activies{" "}
+            Professional Activities{" "}
             <span style={{ fontSize: "15px" }}>{"(it's just previous jobs)"}</span>
           </h1>
           <p>Here&apos;s an extensive list of my previous positions.</p>
