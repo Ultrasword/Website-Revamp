@@ -105,7 +105,11 @@ body {
 
 /* special text colouring */
 .text-gradient-mask-p1 {
-  background: linear-gradient(to right, var(--primary-color-one), var(--secondary-color-two));
+  background: linear-gradient(
+    to right,
+    var(--primary-color-one),
+    var(--secondary-color-two)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
@@ -113,7 +117,11 @@ body {
 
 .text-gradient-mask-p2 {
   position: relative; /* Establish a positioning context for the pseudo-element */
-  background: linear-gradient(to right, var(--tertiary-color), var(--primary-color-one));
+  background: linear-gradient(
+    to right,
+    var(--tertiary-color),
+    var(--primary-color-one)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

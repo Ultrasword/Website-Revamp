@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import styles from "../sections/Contact.module.css";
+import styles from "../styles/Contact.module.css";
 
 const ResumeContainer = () => {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import "@/app/globals.css";
-import styles from "./Skills.module.css";
+import styles from "../styles/Skills.module.css";
 
 import ConwaysGameofLife from "@/components/ConwaysGameofLife";
 import SingleCardViewer from "@/components/SingleCardViewer";
@@ -14,7 +14,8 @@ export default function SkillsSection() {
       <div>
         <div>
           <h1>
-            My Skills <span style={{ fontSize: "15px" }}>{"(just things I know)"}</span>
+            My Skills{" "}
+            <span style={{ fontSize: "15px" }}>{"(just things I know)"}</span>
           </h1>
           <p>
             Here&apos;s an extensive list of <b>relevant</b> skills I have.

@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./MovingArrow.module.css";
+import styles from "../styles/MovingArrow.module.css";
 
 import { useEffect, useState } from "react";
 
@@ -36,7 +36,9 @@ export default function MovingArrow({ detectActive = false }) {
     <div>
       <div
         className={styles["arrow-icon"]}
-        style={{ visibility: isInactive || !detectActive ? "visible" : "hidden" }}
+        style={{
+          visibility: isInactive || !detectActive ? "visible" : "hidden",
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
