@@ -29,7 +29,15 @@ class SingleCard extends Component<SingleCardProps> {
           </div>
           <div className={styles["single-card-right"]}>
             <div>
-              <p className={styles["card-description"]}>{description}</p>
+              {description.split("\n").map((line, index) => {
+                if (line.startsWith("-"))
+                  return (
+                    <li key={index} className={styles["card-description"]}>
+                      {line.slice(1)}
+                    </li>
+                  );
+                else return <p key={index}>{line}</p>;
+              })}
             </div>
             <div className={styles["card-tags"]}>
               {tags.map((tag, index) => (

@@ -16,8 +16,22 @@ interface Particle {
 const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  let canvas = canvasRef.current;
   useEffect(() => {
-    const canvas = canvasRef.current;
+    canvas = canvasRef.current;
+  }, [canvasRef]);
+
+  // Set the canvas dimensions to match the container or viewport
+  const setCanvasSize = () => {
+    if (!canvas) return;
+    const parent = canvas.parentElement;
+    if (parent) {
+      canvas.width = parent.clientWidth;
+      canvas.height = parent.clientHeight;
+    }
+  };
+
+  useEffect(() => {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -26,14 +40,6 @@ const ParticleBackground: React.FC = () => {
     const particles: Particle[] = [];
     const numParticles = 30; // Adjust the number of particles as desired
 
-    // Set the canvas dimensions to match the container or viewport
-    const setCanvasSize = () => {
-      const parent = canvas.parentElement;
-      if (parent) {
-        canvas.width = parent.clientWidth;
-        canvas.height = parent.clientHeight;
-      }
-    };
     setCanvasSize();
 
     // Create an initial set of particles
@@ -51,7 +57,9 @@ const ParticleBackground: React.FC = () => {
     // Animation function to update and draw particles
     const animate = () => {
       // Clear the canvas on each frame
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (canvas) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
 
       const connections: { particle: Particle; otherParticle: Particle }[] = [];
 
@@ -75,8 +83,10 @@ const ParticleBackground: React.FC = () => {
         });
 
         // Bounce off the edges
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx = -particle.vx;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy = -particle.vy;
+        if (canvas) {
+          if (particle.x < 0 || particle.x > canvas.width) particle.vx = -particle.vx;
+          if (particle.y < 0 || particle.y > canvas.height) particle.vy = -particle.vy;
+        }
 
         // Draw the particle as a circle
         ctx.beginPath();
@@ -111,20 +121,15 @@ const ParticleBackground: React.FC = () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [canvas, setCanvasSize]);
 
   return (
     <canvas
       ref={canvasRef}
       style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
         zIndex: -1,
         width: "100%",
         height: "100%",
-        // Optional: if you want to keep a gradient as a base background behind the particles
-        background: "linear-gradient(to right, var(--primary-color-one), var(--primary-color-two))",
       }}
     />
   );

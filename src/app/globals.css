@@ -25,6 +25,8 @@ body {
   --foreground: #171717;
 
   --default-font: "MonaSpace", monospace;
+
+  /* color */
   --primary-color-one: #00a5fd;
   --primary-color-two: #7694ff;
 
@@ -39,11 +41,16 @@ body {
 
   --tertiary-color: white;
 
+  /* single cards */
+  --single-card-background: rgba(0, 0, 0, 0.2);
+
+  /* section */
   --section-title-size: 28px;
   --section-title-weight: bold;
 
   --default-text: black;
 
+  /* fonts */
   --fancy-font: "MonaSpace Krypton", monospace;
   --subtitle-font: "MonaSpace Argon", monospace;
 }
@@ -67,6 +74,9 @@ body {
     --tertiary-color: black;
 
     --default-text: white;
+
+    /* single cards */
+    --single-card-background: rgba(255, 255, 255, 0.05);
   }
 
   html {
@@ -76,9 +86,9 @@ body {
 
 /* make every single div object have a box border */
 /* TODO -- remove it later */
-div {
+/* div {
   border: 1px solid rgba(255, 255, 255, 0.1);
-}
+} */
 
 /* section template code */
 .section-container {

@@ -7,71 +7,45 @@ const SingleCardViewer = () => {
   // get all child objects that are of type SingleCard
   const cardProps = [
     {
-      title: "Conway's Game of Life",
-      description: "A simple implementation of Conway's Game of Life.",
+      title: "Python + Django + Flask",
+      description:
+        "A high-level programming language used for general-purpose programming.\nI use this language for:\n-data analysis\n-web development\n-automation.",
       image: "/skillcards/image1.jpg",
-      tags: ["Game", "Simulation", "Cellular Automata"],
+      tags: ["Game", "Full Stack Development"],
     },
     {
-      title: "Portfolio",
-      description: "A simple portfolio website.",
+      title: "Java + JSP + Spring",
+      description:
+        "A general-purpose programming language that is class-based and object-oriented.\nI use this language for:\n-Android development\n-Game development\n-Web development.",
       image: "/skillcards/image2.jpg",
-      tags: ["Website", "Portfolio"],
+      tags: ["Game", "Android", "Web"],
     },
     {
-      title: "Snake",
-      description: "A simple implementation of the classic game Snake.",
-      image: "/skillcards/image3.gif",
-      tags: ["Game", "Classic"],
+      title: "C/C++",
+      description:
+        "A general-purpose programming language that is used for system programming.\nI use this language for:\n-Game development\n-System programming.",
+      image: "/skillcards/image3.jpg",
+      tags: ["Game", "System Programming"],
     },
     {
-      title: "Tetris",
-      description: "A simple implementation of the classic game Tetris.",
+      title: "React + Next.js",
+      description:
+        "A JavaScript library for building user interfaces.\nI use this library for:\n-Web development\n-UI/UX design.",
       image: "/skillcards/image4.jpg",
-      tags: ["Game", "Classic"],
+      tags: ["Web", "UI/UX"],
     },
     {
-      title: "Pong",
-      description: "A simple implementation of the classic game Pong.",
+      title: "PostgreSQL + MySQL + MongoDB",
+      description:
+        "A powerful, open-source object-relational database system.\nI use this database for:\n-Data storage\n-Data retrieval.",
       image: "/skillcards/image5.jpg",
-      tags: ["Game", "Classic"],
-    },
-    {
-      title: "Space Invaders",
-      description: "A simple implementation of the classic game Space Invaders.",
-      image: "/skillcards/image6.jpg",
-      tags: ["Game", "Classic"],
-    },
-    {
-      title: "Pong",
-      description: "A simple implementation of the classic game Pong.",
-      image: "/skillcards/image5.jpg",
-      tags: ["Game", "Classic"],
-    },
-    {
-      title: "Space Invaders",
-      description: "A simple implementation of the classic game Space Invaders.",
-      image: "/skillcards/image6.jpg",
-      tags: ["Game", "Classic"],
-    },
-    {
-      title: "Pong",
-      description: "A simple implementation of the classic game Pong.",
-      image: "/skillcards/image5.jpg",
-      tags: ["Game", "Classic"],
-    },
-    {
-      title: "Space Invaders",
-      description: "A simple implementation of the classic game Space Invaders.",
-      image: "/skillcards/image6.jpg",
-      tags: ["Game", "Classic"],
+      tags: ["Database", "Data Storage"],
     },
   ];
 
   // create refs
   const cardsList = useRef<HTMLDivElement>(null);
   const cardsViewer = useRef<HTMLDivElement>(null);
-
   const [selectedCard, setSelectedCard] = React.useState(0);
 
   return (
@@ -83,8 +57,20 @@ const SingleCardViewer = () => {
             onClick={() => setSelectedCard(index)}
             className={styles["single-card-list"]}
           >
-            <div>
+            <div className={styles["single-card-list-title"]}>
               <p>{card.title}</p>
+            </div>
+            <div>
+              <div className={styles["single-card-left-list"]}>
+                {card.tags.map((tag, index) => (
+                  <span key={index} className={styles["card-tag"]}>
+                    <span
+                      className={`text-gradient-mask-p1`}
+                      style={{ fontSize: "13px" }}
+                    >{`#${tag}`}</span>
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         ))}

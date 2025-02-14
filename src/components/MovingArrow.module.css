@@ -1,0 +1,19 @@
+@keyframes bounce {
+  0% {
+    transform: translateY(0) scaleY(0.8);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(0) scaleY(0.8);
+  }
+}
+
+.arrow-icon {
+  font-size: 2rem;
+  color: var(--foreground);
+  animation: bounce 2s infinite;
+}

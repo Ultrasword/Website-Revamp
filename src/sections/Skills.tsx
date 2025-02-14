@@ -14,10 +14,11 @@ export default function SkillsSection() {
       <div>
         <div>
           <h1>
-            Professional Activities{" "}
-            <span style={{ fontSize: "15px" }}>{"(it's just previous jobs)"}</span>
+            My Skills <span style={{ fontSize: "15px" }}>{"(just things I know)"}</span>
           </h1>
-          <p>Here&apos;s an extensive list of my previous positions.</p>
+          <p>
+            Here&apos;s an extensive list of <b>relevant</b> skills I have.
+          </p>
         </div>
         {/* /* weird overlay time again */}
         <div style={{ borderRadius: "10px", overflow: "hidden" }}>
