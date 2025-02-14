@@ -1,4 +1,4 @@
-import styles from "./SingleCardViewer.module.css";
+import styles from "../styles/SingleCardViewer.module.css";
 import React, { useRef } from "react";
 
 import SingleCard from "./SingleCard";

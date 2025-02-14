@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 
-import styles from "./Contact.module.css";
+import styles from "../styles/Contact.module.css";
 
 import Image from "next/image";
 import ResumeContainer from "@/components/Resume";
@@ -13,7 +13,13 @@ interface SocialContactProps {
   username: string;
 }
 
-const SocialContactContainer = ({ key, name, link, icon, username }: SocialContactProps) => {
+const SocialContactContainer = ({
+  key,
+  name,
+  link,
+  icon,
+  username,
+}: SocialContactProps) => {
   return (
     <div key={key} className={styles["social-contact"]}>
       <a href={link} target="_blank">
@@ -26,10 +32,22 @@ const SocialContactContainer = ({ key, name, link, icon, username }: SocialConta
             className={styles["social-icon"]}
             style={{ filter: "invert(1)", pointerEvents: "none" }} // This will invert the colors of the SVG
           />
-          <div style={{ display: "flex", alignItems: "center", paddingLeft: "10px" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              paddingLeft: "10px",
+            }}
+          >
             <p>{name}</p>
           </div>
-          <div style={{ display: "flex", alignItems: "center", paddingLeft: "10px" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              paddingLeft: "10px",
+            }}
+          >
             <p>{username}</p>
           </div>
         </div>
