@@ -1,4 +1,4 @@
-import styles from "../styles/SingleCardViewer.module.css";
+import styles from "./styles/SingleCardViewer.module.css";
 import React, { Component } from "react";
 
 import Image from "next/image";

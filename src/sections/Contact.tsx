@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 
-import styles from "../styles/Contact.module.css";
+import styles from "./styles/Contact.module.css";
 
 import Image from "next/image";
 import ResumeContainer from "@/components/Resume";
@@ -13,13 +13,7 @@ interface SocialContactProps {
   username: string;
 }
 
-const SocialContactContainer = ({
-  key,
-  name,
-  link,
-  icon,
-  username,
-}: SocialContactProps) => {
+const SocialContactContainer = ({ key, name, link, icon, username }: SocialContactProps) => {
   return (
     <div key={key} className={styles["social-contact"]}>
       <a href={link} target="_blank">

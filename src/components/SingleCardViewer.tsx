@@ -1,4 +1,4 @@
-import styles from "../styles/SingleCardViewer.module.css";
+import styles from "./styles/SingleCardViewer.module.css";
 import React, { useRef } from "react";
 
 import SingleCard from "./SingleCard";
@@ -24,14 +24,14 @@ const SingleCardViewer = () => {
       title: "C/C++",
       description:
         "A general-purpose programming language that is used for system programming.\nI use this language for:\n-Game development\n-System programming.",
-      image: "/skillcards/image3.jpg",
+      image: "/skillcards/psyduck.jpg",
       tags: ["Game", "System Programming"],
     },
     {
       title: "React + Next.js",
       description:
         "A JavaScript library for building user interfaces.\nI use this library for:\n-Web development\n-UI/UX design.",
-      image: "/skillcards/image4.jpg",
+      image: "/skillcards/image3.gif",
       tags: ["Web", "UI/UX"],
     },
     {

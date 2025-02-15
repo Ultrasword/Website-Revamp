@@ -1,7 +1,7 @@
 "use client";
 
 import "@/app/globals.css";
-import styles from "../styles/Hero.module.css";
+import styles from "./styles/Hero.module.css";
 
 import TypewriterComponent from "typewriter-effect";
 
@@ -33,18 +33,13 @@ export default function HeroSection() {
           left: 0,
         }}
       >
-        <div
-          className={`${styles["hero-background"]} ${styles["hero-background-mask"]}`}
-        >
+        <div className={`${styles["hero-background"]} ${styles["hero-background-mask"]}`}>
           <ParticleBackground />
         </div>
       </div>
 
       {/* text and visuals */}
-      <div
-        className={`section-container ${styles["hero-container"]}`}
-        style={{ width: "100%" }}
-      >
+      <div className={`section-container ${styles["hero-container"]}`} style={{ width: "100%" }}>
         <div
           className={styles["hero-container"]}
           style={{

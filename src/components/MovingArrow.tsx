@@ -1,44 +1,26 @@
 "use client";
 
-import styles from "../styles/MovingArrow.module.css";
+import styles from "./styles/MovingArrow.module.css";
 
-import { useEffect, useState } from "react";
+interface MovingArrowProps {
+  targetSectionTitle?: string;
+  detectActive?: boolean;
+}
 
-export default function MovingArrow({ detectActive = false }) {
-  const [isInactive, setIsInactive] = useState(false);
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-
-    const handleActivity = () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        setIsInactive(true);
-      }, 2000);
-    };
-
-    const handleMouseMove = () => {
-      setIsInactive(false);
-      handleActivity();
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    handleActivity();
-
-    return () => {
-      clearTimeout(timeout);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
+export default function MovingArrow({ targetSectionTitle = "" }: MovingArrowProps) {
   return (
-    <div>
+    <div
+      onClick={(e) => {
+        // jump to target ref
+        e.preventDefault();
+        if (!targetSectionTitle) return;
+        document.querySelector(`#${targetSectionTitle}`)?.scrollIntoView({ behavior: "smooth" });
+      }}
+      className={styles["container"]}
+    >
       <div
         className={styles["arrow-icon"]}
-        style={{
-          visibility: isInactive || !detectActive ? "visible" : "hidden",
-        }}
+        // className={`${styles["arrow-icon"]} ${!isInactive ? "" : styles["arrow-icon-active"]}`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

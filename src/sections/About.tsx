@@ -1,10 +1,8 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 
 import "@/app/globals.css";
-import styles from "../styles/About.module.css";
+import styles from "./styles/About.module.css";
 
 import MovingArrow from "@/components/MovingArrow";
 import ParticleBackground from "@/components/ParticleSim";
@@ -24,10 +22,8 @@ export default function AboutSection() {
 
   return (
     <div id={"About"} style={{ top: 0, left: 0, position: "relative" }}>
-      <div
-        style={{ height: "100px", justifyContent: "center", display: "flex" }}
-      >
-        <MovingArrow />
+      <div style={{ height: "100px", justifyContent: "center", display: "flex" }}>
+        <MovingArrow targetSectionTitle="About" />
       </div>
       <div className={`section-container ${styles["container-grid"]}`}>
         <div className={styles["left-container"]}>
@@ -87,13 +83,7 @@ export default function AboutSection() {
                 }}
               >
                 {images[i].endsWith(".mp4") ? (
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    style={{ width: "100%" }}
-                  >
+                  <video autoPlay muted loop playsInline style={{ width: "100%" }}>
                     <source src={images[i]} type="video/mp4" />
                   </video>
                 ) : (
@@ -120,9 +110,7 @@ export default function AboutSection() {
           <p>Anyways...</p>
           <div className={styles["bottom-title"]}>
             <h1 style={{ fontWeight: "bold" }}>
-              <span className={"text-gradient-mask-p1"}>
-                Welcome to my personal website!
-              </span>
+              <span className={"text-gradient-mask-p1"}>Welcome to my personal website!</span>
             </h1>
           </div>
         </div>
@@ -132,10 +120,8 @@ export default function AboutSection() {
           </div>
         </div>
       </div>
-      <div
-        style={{ height: "100px", justifyContent: "center", display: "flex" }}
-      >
-        <MovingArrow />
+      <div style={{ height: "100px", justifyContent: "center", display: "flex" }}>
+        <MovingArrow targetSectionTitle={"Skills"} />
       </div>
     </div>
   );
