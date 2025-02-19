@@ -1,7 +1,10 @@
 import React from "react";
+import Image from "next/image";
 
 import "@/app/globals.css";
 import styles from "./styles/Experience.module.css";
+
+import ExperienceCard from "@/components/ExperienceCard";
 
 export default function ExperienceSection() {
   const experiences = [
@@ -28,6 +31,16 @@ export default function ExperienceSection() {
       description: ["filler text 1", "filler text 2"],
       companyLogo: "/experiences/blackberry.png",
     },
+    {
+      position: "Java/Web/CAD Teacher",
+      company: "ACCN",
+      location: "Scarborough, ON",
+      startDate: "May 2023",
+      endDate: "Aug 2023",
+      current: false,
+      description: ["filler text 1", "filler text 2"],
+      companyLogo: "/experiences/accn.png",
+    },
   ];
 
   const [activeExperienceIndex, setActiveExperienceIndex] = React.useState(0);
@@ -42,12 +55,13 @@ export default function ExperienceSection() {
     <div className={`section-container`}>
       <div style={{ textAlign: "left", justifyContent: "left", alignContent: "left" }}>
         <h1 style={{ textAlign: "left" }}>I&apos;ve worked [...] so far!</h1>
+        <p>
+          Here&apos;s a small list of places I&apos;ve <u>worked</u> so far!
+        </p>
       </div>
+
       <div className={styles["main-container"]}>
         <div className={styles["left-container"]}>
-          <div style={{ padding: "5px" }}>
-            <p>This will contain a small list of places I&apos;ve worked?</p>
-          </div>
           <div className={styles["experience-list"]}>
             {experiences.map((experience, idx) => {
               return (
@@ -59,7 +73,15 @@ export default function ExperienceSection() {
                     setActiveExperienceIndex(idx);
                   }}
                 >
-                  {experience.company}
+                  <Image
+                    src={experience.companyLogo}
+                    alt={experience.company}
+                    width={100}
+                    height={100}
+                    style={{
+                      width: "auto",
+                    }}
+                  />
                 </div>
               );
             })}
@@ -68,68 +90,7 @@ export default function ExperienceSection() {
         <div className={styles["right-container"]}>
           <div ref={activeExperienceRef} className={styles["experience-viewer"]}>
             {/* active experience information! */}
-            <div className={styles["experience-viewer-item"]}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px" }}>
-                <div style={{ display: "flex", gap: "5px", alignItems: "flex-end" }}>
-                  <div style={{ alignSelf: "flex-end" }}>
-                    <p
-                      style={{
-                        fontWeight: "bold",
-                        fontFamily: "var(--fancy-font)",
-                      }}
-                    >
-                      {experiences[activeExperienceIndex].company}
-                    </p>
-                  </div>
-                  <div>
-                    <p style={{ fontSize: "13px", fontFamily: "var(--subtitle-font)" }}>
-                      {experiences[activeExperienceIndex].position}
-                    </p>
-                  </div>
-                </div>
-                <div
-                  style={{ display: "flex", justifyContent: "flex-end", alignItems: "flex-end" }}
-                >
-                  <div>
-                    <p style={{ textAlign: "right" }}>
-                      {experiences[activeExperienceIndex].location}
-                    </p>
-                  </div>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "left",
-                    fontSize: "13px",
-                  }}
-                >
-                  <span>{experiences[activeExperienceIndex].startDate}</span>
-                  <span style={{ display: "flex", alignItems: "center" }}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      width="16px"
-                      height="16px"
-                    >
-                      <path d="M10 17l5-5-5-5v10z" />
-                    </svg>
-                  </span>
-                  <span>{experiences[activeExperienceIndex].endDate}</span>
-                </div>
-              </div>
-              <div style={{ padding: "10px" }}>
-                <ul className={styles["experience-viewer-description-list"]}>
-                  {experiences[activeExperienceIndex].description.map((desc, idx) => {
-                    return (
-                      <li key={idx} className={styles["experience-viewer-item-description"]}>
-                        <span>{desc}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </div>
+            <ExperienceCard {...experiences[activeExperienceIndex]} />
           </div>
         </div>
       </div>

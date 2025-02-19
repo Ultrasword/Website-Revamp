@@ -25,7 +25,20 @@ class SingleCard extends Component<SingleCardProps> {
 
         <div className={styles["single-card-content"]}>
           <div className={styles["single-card-left"]}>
-            <Image src={image} alt={title} width={300} height={300} />
+            <Image
+              src={image}
+              alt={title}
+              width={300}
+              height={300}
+              style={{
+                objectFit: "cover",
+                aspectRatio: "1 / 1",
+                maxHeight: "100%",
+                maxWidth: "100%",
+                width: "auto",
+                height: "auto",
+              }}
+            />
           </div>
           <div className={styles["single-card-right"]}>
             <div>

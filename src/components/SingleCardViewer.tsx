@@ -10,21 +10,21 @@ const SingleCardViewer = () => {
       title: "Python + Django + Flask",
       description:
         "A high-level programming language used for general-purpose programming.\nI use this language for:\n-data analysis\n-web development\n-automation.",
-      image: "/skillcards/image1.jpg",
+      image: "/skillcards/python.png",
       tags: ["Game", "Full Stack Development"],
     },
     {
       title: "Java + JSP + Spring",
       description:
         "A general-purpose programming language that is class-based and object-oriented.\nI use this language for:\n-Android development\n-Game development\n-Web development.",
-      image: "/skillcards/image2.jpg",
+      image: "/skillcards/java.webp",
       tags: ["Game", "Android", "Web"],
     },
     {
       title: "C/C++",
       description:
         "A general-purpose programming language that is used for system programming.\nI use this language for:\n-Game development\n-System programming.",
-      image: "/skillcards/psyduck.jpg",
+      image: "/skillcards/c++.png",
       tags: ["Game", "System Programming"],
     },
     {
