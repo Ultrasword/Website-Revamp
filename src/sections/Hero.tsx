@@ -9,14 +9,12 @@ import ParticleBackground from "@/components/ParticleSim";
 
 export default function HeroSection() {
   const titles = [
-    "i think we all know this is hella cliche",
-    "I'm a Software Engineer",
-    "and a Full Stack Developer",
-    "I also love to SKI!",
-    "please don't cringe",
-    "I like making games",
-    "this is in literally every single personal website",
-    "UW for the win!",
+    "Software Engineer...",
+    "Robot Lover <3",
+    "Full Stack dev",
+    "Professional Downhill Snow Speedster",
+    "python Game Dev",
+    "University Student",
   ];
 
   return (
@@ -66,16 +64,21 @@ export default function HeroSection() {
                 fontSize: "20px",
                 fontFamily: "var(--subtitle-font)",
                 textAlign: "center",
+                display: "flex",
+                flexDirection: "row",
               }}
             >
-              <TypewriterComponent
-                options={{
-                  strings: titles,
-                  autoStart: true,
-                  loop: true,
-                  delay: 50, // Adjust the delay to make the typing faster
-                }}
-              />
+              <p>I&apos;m a&nbsp;</p>
+              <p>
+                <TypewriterComponent
+                  options={{
+                    strings: titles,
+                    autoStart: true,
+                    loop: true,
+                    delay: 50, // Adjust the delay to make the typing faster
+                  }}
+                />
+              </p>
             </div>
           </div>
         </div>

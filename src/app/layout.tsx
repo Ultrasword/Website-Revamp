@@ -14,7 +14,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Peter Zhang | Portfolio",
-  description: "Here's my portfolio website. Welcome to magic land.",
+  description: "Here's my portfolio website.",
+  icons: {
+    icon: "/logo-dark.ico",
+    // shortcut: "/favicon-16x16.png",
+    // apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

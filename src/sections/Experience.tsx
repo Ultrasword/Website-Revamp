@@ -16,8 +16,9 @@ export default function ExperienceSection() {
       endDate: "Apr 2025",
       current: true,
       description: [
-        "filler text 1 tat is super duper duper duepr duepr duper pe upe dupe long",
-        "filler text 2",
+        "since this page is still under production, here's a short description of my work at QNX:",
+        "i did software testing for the new OS releases",
+        "i also helped automated 58% of the testing scripts",
       ],
       companyLogo: "/experiences/qnx.png",
     },
@@ -28,7 +29,11 @@ export default function ExperienceSection() {
       startDate: "May 2024",
       endDate: "Aug 2024",
       current: false,
-      description: ["filler text 1", "filler text 2"],
+      description: [
+        "here i did some different work",
+        "I helped basically (from start to finish) upgrade one of Blackberry's software applications",
+        "I also helped with some testing and debugging",
+      ],
       companyLogo: "/experiences/blackberry.png",
     },
     {
@@ -38,7 +43,11 @@ export default function ExperienceSection() {
       startDate: "May 2023",
       endDate: "Aug 2023",
       current: false,
-      description: ["filler text 1", "filler text 2"],
+      description: [
+        "Here I was a counciller for an online summer camp",
+        "me and 2 other councillors would teach kids how to code in Java, Web Development, and CAD",
+        "we supervised 40+ students and would essentially curate the entire summer camp for them",
+      ],
       companyLogo: "/experiences/accn.png",
     },
   ];

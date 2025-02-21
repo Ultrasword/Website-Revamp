@@ -23,6 +23,10 @@ export default function ExperienceCard({
 }: Experience) {
   return (
     <div className={styles["experience-viewer-item"]}>
+      <p style={{ visibility: "hidden" }}>
+        {current} {companyLogo}
+      </p>
+
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px" }}>
         <div style={{ display: "flex", gap: "5px", alignItems: "flex-end" }}>
           <div style={{ alignSelf: "flex-end" }}>
