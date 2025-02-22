@@ -21,3 +21,9 @@
 
   font-family: var(--default-font);
 }
+
+.experience-viewer-description-container {
+  position: relative;
+  display: flex;
+  margin-left: 20px;
+}

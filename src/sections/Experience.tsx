@@ -62,44 +62,53 @@ export default function ExperienceSection() {
 
   return (
     <div className={`section-container`}>
-      <div style={{ textAlign: "left", justifyContent: "left", alignContent: "left" }}>
-        <h1 style={{ textAlign: "left" }}>I&apos;ve worked [...] so far!</h1>
-        <p>
-          Here&apos;s a small list of places I&apos;ve <u>worked</u> so far!
-        </p>
-      </div>
-
-      <div className={styles["main-container"]}>
-        <div className={styles["left-container"]}>
-          <div className={styles["experience-list"]}>
-            {experiences.map((experience, idx) => {
-              return (
-                <div
-                  key={idx}
-                  className={styles["experience-list-item"]}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveExperienceIndex(idx);
-                  }}
-                >
-                  <Image
-                    src={experience.companyLogo}
-                    alt={experience.company}
-                    width={100}
-                    height={100}
-                    style={{
-                      width: "auto",
-                    }}
-                  />
-                </div>
-              );
-            })}
-          </div>
+      <div className={styles["content-container"]}>
+        <div style={{ textAlign: "left", justifyContent: "left", alignContent: "left" }}>
+          <h1 style={{ textAlign: "left" }}>
+            Jobs <span style={{ fontSize: "15px" }}>(places i&apos;ve worked so far...)</span>
+          </h1>
         </div>
-        <div className={styles["right-container"]}>
-          <div ref={activeExperienceRef} className={styles["experience-viewer"]}>
-            {/* active experience information! */}
-            <ExperienceCard {...experiences[activeExperienceIndex]} />
+        <div>
+          <p>
+            I&apos;m always looking to find new and exciting internship/coop opportunities - and
+            I&apos;m OK with working away from home.
+          </p>
+          <p>If you&apos;re a person who is looking for a software engineer, let me know!</p>
+          <p>I&apos;d love an opportunity to speak with you :)</p>
+        </div>
+
+        <div className={styles["main-container"]}>
+          <div className={styles["left-container"]}>
+            <div className={styles["experience-list"]}>
+              {experiences.map((experience, idx) => {
+                return (
+                  <div
+                    key={idx}
+                    className={styles["experience-list-item"]}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setActiveExperienceIndex(idx);
+                    }}
+                  >
+                    <Image
+                      src={experience.companyLogo}
+                      alt={experience.company}
+                      width={100}
+                      height={100}
+                      style={{
+                        width: "auto",
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className={styles["right-container"]}>
+            <div ref={activeExperienceRef} className={styles["experience-viewer"]}>
+              {/* active experience information! */}
+              <ExperienceCard {...experiences[activeExperienceIndex]} />
+            </div>
           </div>
         </div>
       </div>

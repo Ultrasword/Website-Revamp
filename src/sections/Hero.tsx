@@ -68,8 +68,8 @@ export default function HeroSection() {
                 flexDirection: "row",
               }}
             >
-              <p>I&apos;m a&nbsp;</p>
-              <p>
+              <span>I&apos;m a&nbsp;</span>
+              <span>
                 <TypewriterComponent
                   options={{
                     strings: titles,
@@ -78,7 +78,7 @@ export default function HeroSection() {
                     delay: 50, // Adjust the delay to make the typing faster
                   }}
                 />
-              </p>
+              </span>
             </div>
           </div>
         </div>

@@ -7,39 +7,36 @@ const SingleCardViewer = () => {
   // get all child objects that are of type SingleCard
   const cardProps = [
     {
-      title: "Python + Django + Flask",
+      title: "Portfolio Website",
       description:
-        "A high-level programming language used for general-purpose programming.\nI use this language for:\n-data analysis\n-web development\n-automation.",
-      image: "/skillcards/python.png",
-      tags: ["Game", "Full Stack Development"],
+        "I built this website using Next.js, React, and TypeScript.\nIt was deployed on Vercel and setup using my custom domain.",
+      image: "/projects/p1.png",
+      tags: ["ThreeJS", "React", "Next.js"],
+      github: "https://github.com/Peter-Dated-Projects/02-10-2025_personal-website",
     },
     {
-      title: "Java + JSP + Spring",
+      title: "SoraGL: 3D Game Engine",
       description:
-        "A general-purpose programming language that is class-based and object-oriented.\nI use this language for:\n-Android development\n-Game development\n-Web development.",
-      image: "/skillcards/java.webp",
-      tags: ["Game", "Android", "Web"],
+        "I created a fully-functional 3D game engine using Python and OpenGL.\nIt was used to create a variety of games and simulations.\nCurrently I'm using it to build a 2D bullet-hell game.",
+      image: "/projects/p2.gif",
+      tags: ["Python", "OpenGL"],
+      github: "https://github.com/Peter-Dated-Projects/01-19-2025_soragl-game-engine",
     },
     {
-      title: "C/C++",
+      title: "Raytracer Engine",
       description:
-        "A general-purpose programming language that is used for system programming.\nI use this language for:\n-Game development\n-System programming.",
-      image: "/skillcards/c++.png",
-      tags: ["Game", "System Programming"],
+        "I built a raytracer engine using C++.\nIt was used to render 3D scenes and create animations.\nI also implemented multi-core processing for faster rendering.",
+      image: "/projects/p3.png",
+      tags: ["C++", "RTX"],
+      github: "https://github.com/Peter-Dated-Projects/01-13-2025_ray-tracing-project",
     },
     {
-      title: "React + Next.js",
+      title: "Desktop Assistant",
       description:
         "A JavaScript library for building user interfaces.\nI use this library for:\n-Web development\n-UI/UX design.",
       image: "/skillcards/image3.gif",
-      tags: ["Web", "UI/UX"],
-    },
-    {
-      title: "PostgreSQL + MySQL + MongoDB",
-      description:
-        "A powerful, open-source object-relational database system.\nI use this database for:\n-Data storage\n-Data retrieval.",
-      image: "/skillcards/image5.jpg",
-      tags: ["Database", "Data Storage"],
+      tags: ["AppDev", "AI/ML"],
+      github: "https://github.com/Peter-Dated-Projects/02-18-2025_desktop-pet-assistant",
     },
   ];
 

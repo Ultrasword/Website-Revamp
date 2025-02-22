@@ -7,9 +7,8 @@ import HeaderSection from "@/sections/Header";
 import AboutSection from "@/sections/About";
 import ContactSection from "@/sections/Contact";
 import HeroSection from "@/sections/Hero";
-import ProjectSection from "@/sections/Projects";
 import ExperienceSection from "@/sections/Experience";
-import SkillsSection from "@/sections/Skills";
+import SkillsSection from "@/sections/Projects";
 
 export default function Home() {
   return (
@@ -20,10 +19,9 @@ export default function Home() {
 
         <main className={styles.main}>
           <AboutSection />
+          <ExperienceSection />
           <SkillsSection />
 
-          <ExperienceSection />
-          <ProjectSection />
           <ContactSection />
         </main>
 

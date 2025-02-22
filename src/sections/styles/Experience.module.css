@@ -1,6 +1,14 @@
 .container {
 }
 
+.content-container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+
+  border-radius: 5px;
+}
+
 .main-container {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -51,8 +59,7 @@
 }
 
 .experience-viewer {
-  padding: 5px;
+  margin: 5px;
   width: 100%;
-
-  background-color: rgba(255, 0, 0, 0.4);
+  height: 400px;
 }
