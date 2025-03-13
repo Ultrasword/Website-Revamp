@@ -1,24 +1,24 @@
 .experience-viewer-item {
   display: block;
-
   min-height: 200px;
-  max-height: 340px;
+
+  background: var(--background);
+  margin: 3px;
 }
 
 .experience-viewer-description-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   list-style-type: none;
   list-style-image: var(--triangle-svg);
   color: white;
   padding-left: 0px;
+  font-size: var(--description-text-size);
+  gap: 5px;
 }
 
 .experience-viewer-item-description {
-  margin: 0px !important;
-  padding: 10px !important;
-
+  padding: 0px 4px !important;
   font-family: var(--default-font);
 }
 
@@ -26,4 +26,5 @@
   position: relative;
   display: flex;
   margin-left: 20px;
+  font-family: var(--reading-font);
 }

@@ -21,11 +21,21 @@ export default function AboutSection() {
   ];
 
   return (
-    <div id={"About"} style={{ top: 0, left: 0, position: "relative" }}>
+    <div
+      id={"About"}
+      style={{
+        top: 0,
+        left: 0,
+        position: "relative",
+      }}
+    >
       <div style={{ height: "100px", justifyContent: "center", display: "flex" }}>
         <MovingArrow targetSectionTitle="About" />
       </div>
-      <div className={`section-container ${styles["container-grid"]}`}>
+      <div
+        className={`section-container ${styles["container-grid"]}`}
+        style={{ border: "1px solid rgba(255, 255, 255, 0.2)" }}
+      >
         <div className={styles["left-container"]}>
           <div>
             <p className={"section-title"}>A little about me...</p>
@@ -69,7 +79,10 @@ export default function AboutSection() {
             <br></br>
           </div>
         </div>
-        <div className={styles["right-container"]}>
+        <div
+          className={styles["right-container"]}
+          style={{ border: "1px solid rgba(255, 255, 255, 0.2)", padding: "5px" }}
+        >
           <div className={styles["collage-container"]}>
             {/* insert an image of me?? or a compilation of a few images? */}
             {Array.from({ length: 9 }).map((_, i) => (

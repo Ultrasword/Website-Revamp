@@ -170,3 +170,17 @@ a.secondary {
     filter: invert();
   }
 }
+
+.conway-sim-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 500px;
+  position: relative;
+  z-index: -1;
+
+  border-radius: 5px;
+
+  -webkit-mask: linear-gradient(to bottom, transparent, black 40%, black 60%, transparent);
+}

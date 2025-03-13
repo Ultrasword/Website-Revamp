@@ -25,6 +25,7 @@ body {
   --foreground: #171717;
 
   --default-font: "MonaSpace", monospace;
+  --reading-font: "MonaSpace Neon", monospace;
 
   /* color */
   --primary-color-one: #00a5fd;
@@ -47,6 +48,8 @@ body {
   /* section */
   --section-title-size: 28px;
   --section-title-weight: bold;
+
+  --description-text-size: 14px;
 
   --default-text: black;
 
@@ -92,17 +95,11 @@ p {
   font-family: var(--default-font);
 }
 
-/* make every single div object have a box border */
-/* TODO -- remove it later */
-div {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 /* section template code */
 .section-container {
+  width: 90%;
   padding: 20px;
   padding-bottom: 30px;
-  width: 90%;
 }
 
 .section-title {

@@ -22,7 +22,7 @@ function HeaderCard(key: number, name: string) {
 function resumeClicked(e: React.MouseEvent<HTMLDivElement>) {
   e.preventDefault();
   window.open(
-    "https://www.canva.com/design/DAGeiavI1Fo/HN1crRZno_mStkB6FnpvkA/view?utm_content=DAGeiavI1Fo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he5249bb08d",
+    "https://drive.google.com/file/d/1s2gR5e9KhTEcy7k9PG96SvaaX94HdmsU/view?usp=sharing",
     "_blank"
   );
 }
