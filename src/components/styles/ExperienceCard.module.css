@@ -4,6 +4,13 @@
 
   background: var(--background);
   margin: 3px;
+
+  transition: transform 0.5s;
+}
+
+.experience-viewer-item:hover {
+  transform: scale(1.01);
+  transition: transform 0.5s;
 }
 
 .experience-viewer-description-list {
