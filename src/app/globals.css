@@ -21,29 +21,29 @@ body {
 @import url("https://cdn.jsdelivr.net/npm/@github/mona-sans/css/mona-sans.css");
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 
   --default-font: "MonaSpace", monospace;
   --reading-font: "MonaSpace Neon", monospace;
 
   /* color */
-  --primary-color-one: #00a5fd;
-  --primary-color-two: #7694ff;
+  --primary-color-one: #0181d9;
+  --primary-color-two: #002bc4;
 
-  --secondary-color-one: #00c4fd;
-  --secondary-color-two: #769dff;
+  --secondary-color-one: #008bff;
+  --secondary-color-two: #ff418e;
 
-  --primary-color-one-rgb: 0, 165, 253;
-  --primary-color-two-rgb: 118, 148, 255;
+  --primary-color-one-rgb: 1, 129, 217;
+  --primary-color-two-rgb: 0, 43, 196;
 
-  --secondary-color-one-rgb: 0, 196, 253;
-  --secondary-color-two-rgb: 118, 157, 255;
+  --secondary-color-one-rgb: 0, 139, 255;
+  --secondary-color-two-rgb: 255, 65, 142;
 
-  --tertiary-color: white;
+  --tertiary-color: black;
 
   /* single cards */
-  --single-card-background: rgba(0, 0, 0, 0.2);
+  --single-card-background: rgba(255, 255, 255, 0.05);
 
   /* section */
   --section-title-size: 28px;
@@ -51,7 +51,7 @@ body {
 
   --description-text-size: 14px;
 
-  --default-text: black;
+  --default-text: white;
 
   /* fonts */
   --fancy-font: "MonaSpace Krypton", monospace;
@@ -61,34 +61,9 @@ body {
   /* shapes */
   --triangle-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white"><polygon points="100,50 0,0 0,100" transform="rotate(0, 50, 50)"/></svg>');
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
 
-    --primary-color-one: #0181d9;
-    --primary-color-two: #002bc4;
-
-    --secondary-color-one: #008bff;
-    --secondary-color-two: #ff418e;
-
-    --primary-color-one-rgb: 1, 129, 217;
-    --primary-color-two-rgb: 0, 43, 196;
-
-    --secondary-color-one-rgb: 0, 139, 255;
-    --secondary-color-two-rgb: 255, 65, 142;
-
-    --tertiary-color: black;
-
-    --default-text: white;
-
-    /* single cards */
-    --single-card-background: rgba(255, 255, 255, 0.05);
-  }
-
-  html {
-    color-scheme: dark;
-  }
+html {
+  color-scheme: dark;
 }
 
 p {
