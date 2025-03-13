@@ -3,7 +3,6 @@ import styles from "./styles/SingleCard.module.css";
 import Image from "next/image";
 
 export interface SingleCardProps {
-  index: number;
   title: string;
   description: string[];
   image: string;
@@ -44,7 +43,16 @@ const createImageObject = (image: string, startOrEnd: string, github: string) =>
   );
 };
 
-export function SingleCard({ index, title, description, image, tags, github }: SingleCardProps) {
+export function SingleCard({
+  index,
+  title,
+  description,
+  image,
+  tags,
+  github,
+}: { index: number } & SingleCardProps) {
+  console.log(index);
+
   return (
     <div className={styles["container"]}>
       <div className={styles["container-sub"]}>
