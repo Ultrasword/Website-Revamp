@@ -1,5 +1,7 @@
 import styles from "./styles/Header.module.css";
 
+import { RESUME_LINK } from "@/app/page";
+
 function HeaderCard(key: number, name: string) {
   return (
     <div key={key}>
@@ -21,15 +23,12 @@ function HeaderCard(key: number, name: string) {
 
 function resumeClicked(e: React.MouseEvent<HTMLDivElement>) {
   e.preventDefault();
-  window.open(
-    "https://drive.google.com/file/d/1s2gR5e9KhTEcy7k9PG96SvaaX94HdmsU/view?usp=sharing",
-    "_blank"
-  );
+  window.open(RESUME_LINK, "_blank");
 }
 
 export default function HeaderSection() {
   // open a file
-  const names = ["Home", "About", "Contact"];
+  const names = ["Home", "About", "Jobs", "Projects"];
 
   return (
     <header id={"Home"} className={styles.header}>

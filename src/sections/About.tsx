@@ -134,7 +134,7 @@ export default function AboutSection() {
         </div>
       </div>
       <div style={{ height: "100px", justifyContent: "center", display: "flex" }}>
-        <MovingArrow targetSectionTitle={"Skills"} />
+        <MovingArrow targetSectionTitle={"Jobs"} />
       </div>
     </div>
   );

@@ -54,37 +54,39 @@ export function SingleCard({
   console.log(index);
 
   return (
-    <div className={styles["container"]}>
-      <div className={styles["container-sub"]}>
-        {index % 2 != 0 ? createImageObject(image, "start", github) : ""}
+    <div className={styles[`container-${index % 2 == 0 ? "a" : "b"}`]}>
+      <div className={styles["container-sub-parent"]}>
+        <div className={styles["container-sub"]}>
+          {index % 2 != 0 ? createImageObject(image, "start", github) : ""}
 
-        <div className={styles["content"]}>
-          <div>
-            <h2 className={styles["card-title"]}>{title}</h2>
+          <div className={styles["content"]}>
+            <div>
+              <h2 className={styles["card-title"]}>{title}</h2>
+            </div>
+            <div className={styles["card-tags"]}>
+              {tags.map((tag, index) => (
+                <span key={index} className={styles["card-tag"]}>
+                  <span className={`text-gradient-mask-p1`}>{`#${tag}`}</span>
+                </span>
+              ))}
+            </div>
+            <div className={styles["card-description-container"]}>
+              <ul>
+                {description.map((line, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className={styles["card-description"]}
+                      dangerouslySetInnerHTML={{ __html: line }}
+                    />
+                  );
+                })}
+              </ul>
+            </div>
           </div>
-          <div className={styles["card-tags"]}>
-            {tags.map((tag, index) => (
-              <span key={index} className={styles["card-tag"]}>
-                <span className={`text-gradient-mask-p1`}>{`#${tag}`}</span>
-              </span>
-            ))}
-          </div>
-          <div className={styles["card-description-container"]}>
-            <ul>
-              {description.map((line, index) => {
-                return (
-                  <li
-                    key={index}
-                    className={styles["card-description"]}
-                    dangerouslySetInnerHTML={{ __html: line }}
-                  />
-                );
-              })}
-            </ul>
-          </div>
+
+          {index % 2 == 0 ? createImageObject(image, "end", github) : ""}
         </div>
-
-        {index % 2 == 0 ? createImageObject(image, "end", github) : ""}
       </div>
     </div>
   );

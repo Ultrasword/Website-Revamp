@@ -77,7 +77,7 @@ export default function SkillsSection() {
 
   return (
     <div
-      id={"Skills"}
+      id={"Projects"}
       className={`section-container ${styles["skills-container"]}`}
       style={{ border: "1px solid rgba(255, 255, 255, 0.2)", borderRadius: "5px" }}
     >

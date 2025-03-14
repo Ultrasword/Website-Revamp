@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./page.module.css";
 
 import HeaderSection from "@/sections/Header";
@@ -8,9 +7,13 @@ import AboutSection from "@/sections/About";
 import HeroSection from "@/sections/Hero";
 import ExperienceSection from "@/sections/Experience";
 import SkillsSection from "@/sections/Projects";
+import { Footer } from "@/sections/Footer";
 
 import ConwaysGameofLife from "@/components/ConwaysGameofLife";
 import MovingArrow from "@/components/MovingArrow";
+
+export const RESUME_LINK: string =
+  "https://drive.google.com/file/d/1s2gR5e9KhTEcy7k9PG96SvaaX94HdmsU/view?usp=sharing";
 
 export default function Home() {
   return (
@@ -32,23 +35,11 @@ export default function Home() {
         <div id="ConwaySim" className={styles["conway-sim-container"]}>
           <ConwaysGameofLife />
         </div>
+        <div>
+          <p style={{ fontSize: "small", padding: 0, margin: 0 }}>conway&apos;s game of life</p>
+        </div>
 
-        {/* work on footer */}
-        <footer className={styles.footer}>
-          <div style={{ marginBottom: "10px", justifyContent: "center", display: "flex" }}>
-            <a
-              href="https://github.com/Peter-Dated-Projects/02-10-2025_personal-website"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
-              Source Code
-            </a>
-          </div>
-          <div style={{ marginBottom: "10px", justifyContent: "center" }}>
-            Made with <span style={{ color: "red" }}>&#9829;</span> by Peter Zhang
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );

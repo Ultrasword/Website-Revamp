@@ -1,22 +1,46 @@
-.container {
-  padding: 15px;
+.container-a {
   border-radius: 10px;
 
   font-family: var(--reading-font);
   font-size: var(--description-text-size);
   background: var(--single-card-background);
   transition: transform 0.5s;
+
+  background: linear-gradient(135deg, rgba(255, 0, 150, 0.6), rgba(0, 204, 255, 0.6));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.container-b {
+  border-radius: 10px;
+
+  font-family: var(--reading-font);
+  font-size: var(--description-text-size);
+  background: var(--single-card-background);
+  transition: transform 0.5s;
+
+  background: linear-gradient(135deg, rgba(0, 204, 255, 0.6), rgba(255, 0, 150, 0.6));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.container-a:hover,
+.container-b:hover {
+  transform: scale(1.01);
+  transition: transform 0.5s;
+}
+
+.container-sub-parent {
+  padding: 3px;
 }
 
 .container-sub {
   gap: 20px;
+  padding: 10px;
+  border-radius: 10px;
   display: grid;
+  background: var(--background);
   grid-template-columns: auto auto;
-}
-
-.container:hover {
-  transform: scale(1.01);
-  transition: transform 0.5s;
 }
 
 .content {

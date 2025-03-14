@@ -53,6 +53,7 @@ export default function ExperienceSection() {
 
   return (
     <div
+      id={"Jobs"}
       className={`section-container`}
       style={{ border: "1px solid rgba(255, 255, 255, 0.2)", borderRadius: "5px" }}
     >
