@@ -65,6 +65,8 @@
 .logo {
   text-decoration: none;
   color: var(--tertiary-color);
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .logo:hover {
@@ -75,4 +77,16 @@
 .logo > a {
   color: var(--tertiary-color);
   text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .card,
+  .resumecard,
+  .logo {
+    display: none;
+  }
+
+  .nav {
+    padding: 10px;
+  }
 }

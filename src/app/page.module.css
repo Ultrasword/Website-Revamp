@@ -183,3 +183,13 @@ a.secondary {
 
   -webkit-mask: linear-gradient(to bottom, transparent, black 40%, black 60%, transparent);
 }
+
+@media (max-width: 600px) {
+  .page {
+    padding: 0 10px;
+  }
+
+  .conway-sim-container {
+    height: 300px;
+  }
+}

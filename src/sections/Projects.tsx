@@ -51,7 +51,7 @@ const cardProps = [
   {
     title: "Raytracer Engine",
     description: [
-      "Implemented a Ray Tracing Rendering engine in C++ — inspired by <a href='https://raytracing.github.io/books/RayTracingInOneWeekend.html'>https://raytracing.github.io/books/RayTracingInOneWeekend.html</a>",
+      "Implemented a Ray Tracing Rendering engine in C++ — inspired by <a href='https://raytracing.github.io/books/RayTracingInOneWeekend.html'>RayTracingInOneWeekend</a>",
       "I also implemented multi-core processing to superboost CPU-side rendering",
       "I was inspired by every single human being to make a YouTube video on building a raytracer in C/C++",
     ],

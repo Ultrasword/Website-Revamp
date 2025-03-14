@@ -82,4 +82,59 @@
   flex-direction: column;
   gap: 5px;
   min-height: 200px;
+
+  flex-wrap: wrap;
+  text-wrap: wrap;
+}
+
+.card-description-container > li {
+  flex-wrap: wrap;
+}
+
+.container-sub800 {
+  display: none;
+}
+
+@media screen and (max-width: 860px) {
+  .container-sub {
+    grid-template-columns: 1fr;
+  }
+
+  .container-a,
+  .container-b {
+    display: none;
+  }
+
+  .container-sub800 {
+    display: flex;
+    border-radius: 10px;
+
+    font-family: var(--reading-font);
+    font-size: var(--description-text-size);
+    background: var(--single-card-background);
+    transition: transform 0.5s;
+
+    background: linear-gradient(135deg, rgba(255, 0, 150, 0.6), rgba(0, 204, 255, 0.6));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+  }
+
+  .github-link {
+    display: none;
+  }
+
+  .container-sub-800 {
+    gap: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    display: grid;
+    background: var(--background);
+    grid-template-columns: 100px auto;
+    grid-template-rows: 100px auto;
+  }
+
+  .content-image {
+    width: 100px;
+    height: 100px;
+  }
 }

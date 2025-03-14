@@ -36,9 +36,7 @@ export default function HeaderSection() {
         <div>
           <div className={styles.logo}>
             <a href={"https://peterzhang.dev"}>
-              <p style={{ fontWeight: "bold", fontSize: "20px" }} className={styles.nav}>
-                peterzhang.dev
-              </p>
+              <p className={styles.nav}>peterzhang.dev</p>
             </a>
           </div>
         </div>

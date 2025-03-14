@@ -21,12 +21,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <div
-      id={"About"}
-      style={{
-        position: "relative",
-      }}
-    >
+    <div id={"About"} className={styles["container"]}>
       <div style={{ height: "100px", justifyContent: "center", display: "flex" }}>
         <MovingArrow targetSectionTitle="About" />
       </div>
@@ -98,18 +93,20 @@ export default function AboutSection() {
                     <source src={images[i]} type="video/mp4" />
                   </video>
                 ) : (
-                  <Image
-                    src={images[i]}
-                    alt={`image${i}`}
-                    width={500}
-                    height={500}
-                    style={{
-                      display: "flex",
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
+                  <div className={styles["collage-image"]}>
+                    <Image
+                      src={images[i]}
+                      alt={`image${i}`}
+                      width={500}
+                      height={500}
+                      style={{
+                        display: "flex",
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
                 )}
               </div>
             ))}
@@ -120,7 +117,7 @@ export default function AboutSection() {
         <div className={styles["bottom-container"]}>
           <p>Anyways...</p>
           <div className={styles["bottom-title"]}>
-            <h1 style={{ fontWeight: "bold" }}>
+            <h1 style={{ fontWeight: "bold", textAlign: "center" }}>
               <span className={"text-gradient-mask-p1"}>Welcome to my personal website!</span>
             </h1>
           </div>

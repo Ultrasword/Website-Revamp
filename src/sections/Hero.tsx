@@ -19,18 +19,7 @@ export default function HeroSection() {
 
   return (
     <div id={"Hero"} style={{ width: "100%", top: 0, left: 0 }}>
-      <div
-        style={{
-          maskImage:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))",
-          width: "100%",
-          height: "470px",
-          position: "absolute",
-          zIndex: -1,
-          top: 0,
-          left: 0,
-        }}
-      >
+      <div className={styles["container"]}>
         <div className={`${styles["hero-background"]} ${styles["hero-background-mask"]}`}>
           <ParticleBackground />
         </div>
@@ -47,27 +36,10 @@ export default function HeroSection() {
           }}
         >
           <div>
-            <h1
-              style={{
-                fontWeight: "90px",
-                fontSize: "60px",
-                fontFamily: "var(--fancy-font)",
-                margin: "0",
-              }}
-            >
-              Peter Zhang
-            </h1>
+            <h1 className={styles["hero-title"]}>Peter Zhang</h1>
           </div>
           <div>
-            <div
-              style={{
-                fontSize: "20px",
-                fontFamily: "var(--subtitle-font)",
-                textAlign: "center",
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
+            <div className={styles["hero-subtitle"]}>
               <span>I&apos;m a&nbsp;</span>
               <span>
                 <TypewriterComponent

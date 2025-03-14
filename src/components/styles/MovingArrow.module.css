@@ -25,3 +25,9 @@
 .container {
   cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+  .arrow-icon {
+    display: none;
+  }
+}
