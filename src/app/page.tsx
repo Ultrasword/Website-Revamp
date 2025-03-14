@@ -14,9 +14,10 @@ import MovingArrow from "@/components/MovingArrow";
 
 export default function Home() {
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.page}>
         <HeaderSection />
+
         <HeroSection />
 
         <main className={styles.main}>
@@ -33,7 +34,17 @@ export default function Home() {
           <ConwaysGameofLife />
         </div>
         <div>
-          <p style={{ fontSize: "small", padding: 0, margin: 0 }}>conway&apos;s game of life</p>
+          <p
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              fontSize: "small",
+              padding: 0,
+              margin: 0,
+            }}
+          >
+            conway&apos;s game of life
+          </p>
         </div>
 
         <Footer />

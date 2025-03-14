@@ -1,8 +1,13 @@
 .container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   border-top: 1px solid white;
   padding: 10px;
   margin-top: 40px;
+
+  -webkit-align-items: center;
+  -webkit-justify-items: center;
 }
 
 .content-container {

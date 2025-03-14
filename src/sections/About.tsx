@@ -24,8 +24,6 @@ export default function AboutSection() {
     <div
       id={"About"}
       style={{
-        top: 0,
-        left: 0,
         position: "relative",
       }}
     >

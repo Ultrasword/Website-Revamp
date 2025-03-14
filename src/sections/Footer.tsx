@@ -1,7 +1,7 @@
+import "@/app/globals.css";
 import styles from "@/sections/styles/Footer.module.css";
 
 import { RESUME_LINK } from "@/app/constants";
-
 import Image from "next/image";
 
 interface LinkProps {
