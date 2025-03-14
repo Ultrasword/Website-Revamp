@@ -1,6 +1,6 @@
 import styles from "./styles/Header.module.css";
 
-import { RESUME_LINK } from "@/app/page";
+import { RESUME_LINK } from "@/app/constants";
 
 function HeaderCard(key: number, name: string) {
   return (
