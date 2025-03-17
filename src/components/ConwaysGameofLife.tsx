@@ -233,15 +233,19 @@ o13bo22b2o4b2o9bo$5b3o12bobo21bobo12b3o$4bo9b2o4b2o22bo13bo$4b4o6b3o26b
       varying vec2 vUv;
       uniform float u_time;
       uniform sampler2D u_texture;
-      uniform vec3 backColor;
+
       void main() {
+        vec3 black = vec3(0, 0, 0);
+
         vec2 uv = vUv;
         vec4 texColor = texture2D(u_texture, uv);
         float gradient = 0.5 + 0.5 * sin(uv.x * 10.0 + u_time);
+
         vec3 color = mix(vec3(1.0, 0.254, 0.557), vec3(0.0, 0.141, 0.667), gradient);
-        color = texColor.r > 0.5 ? color : backColor;
-        // color = texColor.r > 0.5 ? color : vec3(1.0, 1.0, 1.0);
+
+        color = texColor.r > 0.5 ? color : black;
         gl_FragColor = vec4(color, 1.0);
+
       }
     `;
   const width = 72;
@@ -254,7 +258,6 @@ o13bo22b2o4b2o9bo$5b3o12bobo21bobo12b3o$4bo9b2o4b2o22bo13bo$4b4o6b3o26b
     uniforms: {
       u_time: { value: 0.0 },
       u_texture: { value: null },
-      backColor: { value: new THREE.Vector3(0, 0, 0) },
     },
   });
 
@@ -341,8 +344,7 @@ o13bo22b2o4b2o9bo$5b3o12bobo21bobo12b3o$4bo9b2o4b2o22bo13bo$4b4o6b3o26b
         texture.image.data = data;
         texture.needsUpdate = true;
       }
-      const backColor = shaderMaterial.uniforms.backColor.value;
-      renderer.setClearColor(new THREE.Color(backColor.x, backColor.y, backColor.z));
+      renderer.setClearColor(new THREE.Color(0, 0, 0));
 
       // renderer.render(gamescene, orthoCamera);
       renderer.render(gamescene, perspCamera);
@@ -367,26 +369,6 @@ o13bo22b2o4b2o9bo$5b3o12bobo21bobo12b3o$4bo9b2o4b2o22bo13bo$4b4o6b3o26b
       }
     };
   });
-
-  useEffect(() => {
-    const handleColorSchemeChange = (e: MediaQueryListEvent) => {
-      shaderMaterial.uniforms.backColor.value = e.matches
-        ? new THREE.Vector3(0, 0, 0) // Dark mode
-        : new THREE.Vector3(1, 1, 1); // Light mode
-    };
-
-    const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    colorSchemeQuery.addEventListener("change", handleColorSchemeChange);
-
-    // Set initial backColor based on the current preference
-    shaderMaterial.uniforms.backColor.value = colorSchemeQuery.matches
-      ? new THREE.Vector3(0, 0, 0)
-      : new THREE.Vector3(1, 1, 1);
-
-    return () => {
-      colorSchemeQuery.removeEventListener("change", handleColorSchemeChange);
-    };
-  }, [shaderMaterial.uniforms.backColor]);
 
   // Render a local container only if a mountNode wasn't provided.
   return <div id={"ConwaysGame"} ref={refContainer} style={{ width: "100%", height: "100%" }} />;

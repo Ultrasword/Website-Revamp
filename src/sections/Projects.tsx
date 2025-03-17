@@ -15,9 +15,18 @@ const cardProps = [
       "Built a custom video context caching system to increase video search engine speed by 300% and a custom backend server hosted on the RPI4 using fastapi.",
       "I was inspired by the idea of having a daily vlog that was automatically generated and edited for me. I wanted to build a system that could capture my day and edit it into a video for me.",
     ],
-    image: "projects/daily-vibez.png",
-    tags: ["Python", "FastAPI", "Raspberry Pi", "Gemini API", "Github", "React", "Next.js", "Typescript"],
-    github: "https://github.com/Ultrasword/03-14-2025_cuhacking-qnx-hack"
+    image: "/projects/daily-vibez.png",
+    tags: [
+      "Python",
+      "FastAPI",
+      "Raspberry Pi",
+      "Gemini API",
+      "Github",
+      "React",
+      "Next.js",
+      "Typescript",
+    ],
+    github: "https://github.com/Ultrasword/03-14-2025_cuhacking-qnx-hack",
   },
   {
     title: "Portfolio Website",
