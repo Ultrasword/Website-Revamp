@@ -7,6 +7,19 @@ import { SingleCard, SingleCardProps } from "@/components/SingleCard";
 
 const cardProps = [
   {
+    title: "Daily Vibez - cuHacking Submission",
+    description: [
+      "cuHacking submission for the 2nd Carleton hosted hackathon. Generates a daily vlog - a representation of the daily vibe.",
+      "Designed and built an AI assisted automated video capture system and video search engine in under 36 hours.",
+      "Used a Raspberry Pi 4B, camera and microphone to capture video and audio + Gemini API to generate context",
+      "Built a custom video context caching system to increase video search engine speed by 300% and a custom backend server hosted on the RPI4 using fastapi.",
+      "I was inspired by the idea of having a daily vlog that was automatically generated and edited for me. I wanted to build a system that could capture my day and edit it into a video for me.",
+    ],
+    image: "projects/daily-vibez.png",
+    tags: ["Python", "FastAPI", "Raspberry Pi", "Gemini API", "Github", "React", "Next.js", "Typescript"],
+    github: "https://github.com/Ultrasword/03-14-2025_cuhacking-qnx-hack"
+  },
+  {
     title: "Portfolio Website",
     description: [
       "Built a fully reactive personal website for you wonderful people to check out the cool stuff I’ve been working on!",
