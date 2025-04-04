@@ -14,7 +14,7 @@ const cardProps = [
       "I also implemented a Bounding Volume Hierarchy (BVH) to accelerate the simulation by an average of 500%.",
       "BVH = a tree structure that divides the simulation space into smaller regions, allowing for faster collision detection and rendering.",
     ],
-    image: "https://raw.githubusercontent.com/Peter-Dated-Projects/03-31-2025_bounding-volume-hierarachy-but-its-2d-for-now/refs/heads/main/docs/boids.gif",
+    image: "https://raw.githubusercontent.com/Peter-Dated-Projects/03-31-2025_bounding-volume-hierarachy-but-its-2d-for-now/refs/heads/main/docs/boids.gif?raw=true",
     tags: ["python", "pygame", "Github"],
     github: "https://github.com/Peter-Dated-Projects/03-31-2025_bounding-volume-hierarachy-but-its-2d-for-now"
   },
