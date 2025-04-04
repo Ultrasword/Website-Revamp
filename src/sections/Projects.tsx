@@ -7,6 +7,18 @@ import { SingleCard, SingleCardProps } from "@/components/SingleCard";
 
 const cardProps = [
   {
+    title: "Boids Simulation -- Accelerated with Bounding Volume Hierarchy",
+    description: [
+      "Implemented a Boids Simulation in Python using pygame.",
+      "The simulation uses a custom built physics engine to simulate flocking behaviour.",
+      "I also implemented a Bounding Volume Hierarchy (BVH) to accelerate the simulation by an average of 500%.",
+      "BVH = a tree structure that divides the simulation space into smaller regions, allowing for faster collision detection and rendering.",
+    ],
+    image: "https://raw.githubusercontent.com/Peter-Dated-Projects/03-31-2025_bounding-volume-hierarachy-but-its-2d-for-now/refs/heads/main/docs/boids.gif",
+    tags: ["python", "pygame", "Github"],
+    github: "https://github.com/Peter-Dated-Projects/03-31-2025_bounding-volume-hierarachy-but-its-2d-for-now"
+  },
+  {
     title: "Daily Vibez - cuHacking Submission",
     description: [
       "cuHacking submission for the 2nd Carleton hosted hackathon. Generates a daily vlog - a representation of the daily vibe.",
