@@ -7,6 +7,17 @@ import { SingleCard, SingleCardProps } from "@/components/SingleCard";
 
 const cardProps = [
   {
+    title: "WhisperCore -- Real-Time Speech To Text Engine",
+    description: [
+      "A real-time STT full-stack app using Whisper.cpp on Mac M2 with CoreML Acceleration (70x faster than Whisper).",
+      "Built React/NextJS frontend with Flask/SocketIO backend for seamless audio processing and low-latency transcription.",
+      "Created multithreaded backend that processes audio streams concurrently with thread-safe data structures for audio buffer management and MIME type conversion with ffmpeg.",
+    ],
+    image: "/projects/whispercore.png",
+    tags: ["Python", "Flask", "SocketIO", "React", "Next.js", "Typescript"],
+    github: "https://github.com/Peter-Dated-Projects/04-13-2025_speech-to-text-mac",
+  },
+  {
     title: "Boids Simulation -- Accelerated with Bounding Volume Hierarchy",
     description: [
       "Implemented a Boids Simulation in Python using pygame.",
@@ -16,7 +27,8 @@ const cardProps = [
     ],
     image: "/projects/boids.gif",
     tags: ["python", "pygame", "Github"],
-    github: "https://github.com/Peter-Dated-Projects/03-31-2025_bounding-volume-hierarachy-but-its-2d-for-now"
+    github:
+      "https://github.com/Peter-Dated-Projects/03-31-2025_bounding-volume-hierarachy-but-its-2d-for-now",
   },
   {
     title: "Daily Vibez - cuHacking Submission",
