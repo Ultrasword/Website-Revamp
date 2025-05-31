@@ -307,26 +307,56 @@
      /* perspective: 1000px; */ /* This should be the active perspective for this path */
   }
 
+  /* Responsive adjustments for page peel */
   .corner-flip-trigger {
-    border-bottom-width: 30px;
-    border-left-width: 30px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .corner-flip-trigger::after {
+    border-width: 0 0 30px 30px;
+  }
+
+  .corner-flip-trigger:hover::after {
+    border-width: 0 0 35px 35px; /* Slightly larger peel on hover for small screens */
   }
 }
 
-/* New styles for the clickable corner */
+/* Page Peel Effect for the clickable corner */
 .corner-flip-trigger {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px; /* Clickable area width */
+  height: 50px; /* Clickable area height */
+  cursor: pointer;
+  z-index: 4;
+  overflow: visible; /* Or remove if not needed, default is visible */
+  /* transition: none; Remove old transition for border-bottom-color */
+}
+
+/* Remove old hover effect if it exists for the main trigger element */
+/* .corner-flip-trigger:hover { ... } */
+
+.corner-flip-trigger::after {
+  content: "";
   position: absolute;
   bottom: 0;
   right: 0;
   width: 0;
   height: 0;
-  border-bottom: 50px solid rgba(0, 123, 255, 0.7); /* Placeholder blue */
-  border-left: 50px solid transparent;
-  cursor: pointer;
-  transition: border-bottom-color 0.3s ease;
-  z-index: 4; /* Above card content, below modals etc. */
+  border-style: solid;
+  /* Default peel for larger screens (50px base from container size) */
+  border-width: 0 0 50px 50px;
+  /* Order: transparent(top) transparent(right) peel-color(bottom) revealed-area-color(left) */
+  border-color: transparent transparent #aaaaaa #f0f0f0; /* Placeholder: peel #aaaaaa, revealed #f0f0f0 */
+  box-shadow: -3px -3px 3px rgba(0,0,0,0.15); /* Shadow for depth */
+  transition: all 0.3s ease; /* Transition for hover effects */
 }
 
-.corner-flip-trigger:hover {
-  border-bottom-color: rgba(0, 86, 179, 0.9); /* Darker placeholder blue on hover */
+.corner-flip-trigger:hover::after {
+  /* Slightly larger peel and modified colors on hover */
+  border-width: 0 0 60px 60px; /* Make peel appear larger */
+  border-color: transparent transparent #888888 #ffffff; /* Placeholder: darker peel #888888, brighter revealed #ffffff */
+  box-shadow: -5px -5px 5px rgba(0,0,0,0.25); /* Enhance shadow */
 }
