@@ -47,12 +47,13 @@
 
 /* The .content class is inside .card-front */
 .content {
-  /* width: 98%; */ /* Handled by .card-front or internal elements */
+  /* width: 100%; */ /* Set to flex:1 for row layout, width:100% for column */
   /* height: 100%; */ /* Content should define height */
   object-fit: cover; /* This might apply to images within the card, if any */
   display: flex; /* To manage layout of title, tags, description */
   flex-direction: column;
   gap: 10px; /* Spacing between content elements */
+  flex: 1; /* Takes remaining space in row layout */
 }
 
 .image-container {
@@ -105,7 +106,7 @@
 
   .container-a,
   .container-b {
-    /* display: none; */ /* This is already handled bytsx logic, but flip needs wrapper */
+    display: none; /* Hide larger screen containers on smaller screens */
   }
 
   /* This is the main container for the card on smaller screens */
@@ -191,10 +192,12 @@
   padding: 20px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Default to row for two-column layout */
+  align-items: flex-start; /* Align items (image, content div) to the top */
+  gap: 20px; /* Gap between image and content div */
   transform: rotateY(0deg);
   z-index: 2;
-  gap: 15px; /* Added gap for direct children like .content and flip-button */
+  position: relative; /* For absolute positioning of the flip button */
 }
 
 .card-back {
@@ -232,22 +235,22 @@
 /* Button Styles */
 .flip-button,
 .back-button {
-  /* position: absolute; */ /* No longer absolute; part of flex flow in card-front/card-back */
-  align-self: flex-end; /* Align to the right if card-front/back is flex column */
-  margin-top: auto; /* Push to bottom if in flex column and this is last item */
   padding: 8px 15px;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 3; /* Still useful for stacking if other content overlaps */
+  z-index: 3;
   font-family: var(--main-font);
 }
 
 .flip-button {
-  /* bottom: 15px; */ /* Removed */
-  /* right: 15px; */ /* Removed */
+  position: absolute; /* Default for large screens */
+  bottom: 20px;
+  right: 20px;
+  /* align-self: flex-end; */ /* Removed */
+  /* margin-top: auto; */ /* Removed */
 }
 
 .back-button {
@@ -263,12 +266,28 @@
 
 /* Ensure .content elements are positioned correctly within .card-front */
 .card-front .content {
-  width: 100%;
+  /* width: 100%; */ /* Removed, flex:1 handles width in row, media query handles for column */
   /* height: 100%; */ /* Removed, content defines height */
 }
 
 @media screen and (max-width: 860px) {
   /* .container-sub rule for small screens (grid-template-columns: 1fr) is already defined above */
+  .card-front {
+    flex-direction: column; /* Revert to column for small screens */
+    gap: 15px; /* Restore column gap */
+    /* position: relative; */ /* Can remain or be removed if static button doesn't need it */
+  }
+
+  .card-front .content {
+    flex: none; /* Reset flex property */
+    width: 100%; /* Ensure content takes full width in column layout */
+  }
+
+  .flip-button {
+    position: static; /* Revert to static positioning */
+    align-self: flex-end; /* Position in flex column */
+    margin-top: auto; /* Push to bottom */
+  }
 
   .container-sub800 .container-sub .card-wrapper { /* More specific selector */
     grid-column: 1 / -1; /* card-wrapper spans the single column grid */
