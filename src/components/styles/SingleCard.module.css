@@ -36,17 +36,22 @@
 
 .container-sub {
   gap: 20px;
-  padding: 10px;
+  padding: 10px; /* This padding might need to be on card-front/card-back instead */
   border-radius: 10px;
   display: grid;
-  background: var(--background);
+  background: var(--background); /* This background might be for the card faces */
   grid-template-columns: auto auto;
+  position: relative; /* For 3D context */
+  perspective: 1000px; /* For 3D effect */
 }
 
+/* The .content class might need to be re-evaluated.
+   If .card-wrapper takes full space, .content might become part of .card-front.
+   For now, let's assume .content is inside .card-front or adapted. */
 .content {
-  width: 98%;
-  height: 100%;
-  object-fit: cover;
+  /* width: 98%; */ /* Potentially remove or adjust if card-wrapper handles dimensions */
+  /* height: 100%; */ /* Potentially remove or adjust */
+  object-fit: cover; /* This might apply to images within the card */
 }
 
 .image-container {
@@ -102,21 +107,36 @@
 
   .container-a,
   .container-b {
-    display: none;
+    /* display: none; */ /* This is already handled bytsx logic, but flip needs wrapper */
   }
 
+  /* This is the main container for the card on smaller screens */
   .container-sub800 {
-    display: flex;
+    display: flex; /* This is the outer container, should not be display:none based on media query */
     border-radius: 10px;
-
     font-family: var(--reading-font);
     font-size: var(--description-text-size);
-    background: var(--single-card-background);
+    /* background: var(--single-card-background); */ /* Moved to card faces or wrapper */
     transition: transform 0.5s;
+    /* background: linear-gradient(135deg, rgba(255, 0, 150, 0.6), rgba(0, 204, 255, 0.6)); */
+    /* background-origin: border-box; */
+    /* background-clip: content-box, border-box; */
+    position: relative; /* For 3D context for the card wrapper inside */
+    perspective: 1000px;
+  }
 
-    background: linear-gradient(135deg, rgba(255, 0, 150, 0.6), rgba(0, 204, 255, 0.6));
-    background-origin: border-box;
-    background-clip: content-box, border-box;
+  /* This class seems to be the equivalent of .container-sub for small screens */
+  .container-sub-800 { /* Renamed from .container-sub-800 to avoid confusion if it's a layout variant */
+    gap: 20px;
+    padding: 10px; /* This padding might need to be on card-front/card-back instead */
+    border-radius: 10px;
+    display: grid;
+    background: var(--background); /* This background might be for the card faces */
+    grid-template-columns: 100px auto; /* Original style */
+    grid-template-rows: 100px auto; /* Original style */
+    /* position: relative; Ensure this is set if it's the direct parent of card-wrapper */
+    /* perspective: 1000px; Ensure this is set if it's the direct parent of card-wrapper */
+    /* The actual .card-wrapper will be inside this, taking up one of the grid areas or spanning them */
   }
 
   .github-link {
@@ -136,5 +156,121 @@
   .content-image {
     width: 100px;
     height: 100px;
+  }
+}
+
+/* Card Flip Styles */
+.card-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* perspective: 1000px; /* Moved to parent (.container-sub / .container-sub800) */
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transition: transform 0.7s ease-in-out;
+  background: var(--background); /* Card face background */
+  border-radius: 10px; /* Match parent container's border-radius */
+  padding: 20px; /* Add padding to card faces */
+  box-sizing: border-box;
+  display: flex; /* For centering content or specific layout */
+  flex-direction: column; /* Default stacking */
+  /* overflow: auto; /* If content might overflow */
+}
+
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2; /* Ensure front is initially above back */
+}
+
+.card-back {
+  transform: rotateY(180deg) translateX(100%); /* Start off-screen to the right */
+  z-index: 1; /* Initially behind front */
+  /* Content for back face */
+  align-items: center; /* Example: center "no video" text */
+  justify-content: center; /* Example: center "no video" text */
+}
+
+.card-wrapper.is-flipped .card-front {
+  transform: rotateY(-180deg) translateX(-100%);
+  z-index: 1;
+}
+
+.card-wrapper.is-flipped .card-back {
+  transform: rotateY(0deg) translateX(0%);
+  z-index: 2;
+}
+
+/* Button Styles */
+.flip-button,
+.back-button {
+  position: absolute;
+  padding: 8px 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 3; /* Above card faces but below modals etc. */
+  font-family: var(--main-font);
+}
+
+.flip-button:hover,
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.flip-button {
+  bottom: 15px; /* Position from bottom of card-front */
+  right: 15px; /* Position from right of card-front */
+}
+
+.back-button {
+  top: 15px; /* Position from top of card-back */
+  right: 15px; /* Position from right of card-back */
+}
+
+/* Ensure .content elements are positioned correctly within .card-front */
+.card-front .content {
+  width: 100%; /* Make sure it takes full width of card-front */
+  height: 100%; /* Make sure it takes full height of card-front */
+}
+
+/* For the smaller layout, the .container-sub-800 class (the grid) needs to allow the .card-wrapper to span its area if it's a single card face */
+/* If .card-wrapper is inside one of the grid cells, then that cell needs perspective. */
+/* Assuming .container-sub (the grid for >860px) and .container-sub800 (the outer container for <860px) are the perspective holders */
+
+/* The inner grid for <860px is .container-sub-800 (as per original HTML structure in TSX) */
+/* This rule might be problematic if .container-sub-800 is also the component that has perspective. */
+/* Let's assume the component with perspective is .container-sub800 (the media query one) */
+/* and the grid is .container-sub-layout (new name to avoid confusion) */
+
+@media screen and (max-width: 860px) {
+  .container-sub { /* This is for >860px, so it should be display:none here or its parent */
+    /* display: none; */ /* This is handled by TSX */
+  }
+  .container-sub800 .container-sub {
+    /* Styles for the grid layout *inside* the .container-sub800 for small screens */
+    /* This is where the actual card content (image, text) is laid out for small screens */
+    /* If the flip happens *inside* this grid, then this grid needs to be relative and have perspective */
+    /* However, the TSX structure implies .container-sub800 is the one that gets flipped */
+    /* The TSX has: div.container-sub800 -> div.container-sub-parent -> div.container-sub (this one) */
+    /* So, the div.container-sub inside .container-sub800 needs perspective if it's the flip root */
+    position: relative;
+    perspective: 1000px;
+    background: transparent; /* The background should be on card-front/back */
+    padding: 0; /* Padding should be on card-front/back */
+  }
+
+  .container-sub800 .card-wrapper {
+    /* Ensure wrapper takes full space of its parent grid cell or the container-sub */
+    grid-column: 1 / -1; /* If it needs to span grid columns */
   }
 }
