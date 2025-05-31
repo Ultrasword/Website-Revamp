@@ -36,31 +36,35 @@
 
 .container-sub {
   gap: 20px;
-  padding: 10px;
-  border-radius: 10px;
+  /* padding: 10px; */ /* Moved to card-front/card-back */
+  border-radius: 10px; /* This might be redundant if card faces have it */
   display: grid;
-  background: var(--background);
+  /* background: var(--background); */ /* Moved to card-front/card-back */
   grid-template-columns: auto auto;
+  position: relative; /* For 3D context */
+  perspective: 1000px; /* For 3D effect */
 }
 
+/* The .content class is inside .card-front */
 .content {
-  width: 98%;
-  height: 100%;
-  object-fit: cover;
+  /* width: 100%; */ /* Set to flex:1 for row layout, width:100% for column */
+  /* height: 100%; */ /* Content should define height */
+  object-fit: cover; /* This might apply to images within the card, if any */
+  display: flex; /* To manage layout of title, tags, description */
+  flex-direction: column;
+  gap: 10px; /* Spacing between content elements */
+  flex: 1; /* Takes remaining space in row layout */
 }
 
 .image-container {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 300px; /* Explicit width */
+  height: 300px; /* Explicit height */
   border-radius: 10px;
   overflow: hidden;
-
-  justify-content: flex-end;
-  align-items: flex-end;
-
-  max-height: 300px;
-
+  justify-content: flex-end; /* These are flex properties, image-container itself is not a flex container by default */
+  align-items: flex-end;   /* Consider if these are needed or if 'Image' component handles it */
+  /* max-height: 300px; */ /* Redundant due to explicit height */
   transition: transform 0.5s;
 }
 
@@ -102,39 +106,204 @@
 
   .container-a,
   .container-b {
-    display: none;
+    display: none; /* Hide larger screen containers on smaller screens */
   }
 
+  /* This is the main container for the card on smaller screens */
   .container-sub800 {
     display: flex;
     border-radius: 10px;
-
     font-family: var(--reading-font);
     font-size: var(--description-text-size);
-    background: var(--single-card-background);
     transition: transform 0.5s;
+    position: relative;
+    perspective: 1000px;
+    /* Background and specific border gradient is on .container-a/b,
+       so .container-sub800 should not have its own if it's just a structure for small screens.
+       The outer border/background comes from .container-a/b styles if those are also applied to .container-sub800 in TSX,
+       or .container-sub800 needs its own distinct outer styling. Assuming it's distinct for now. */
+  }
 
-    background: linear-gradient(135deg, rgba(255, 0, 150, 0.6), rgba(0, 204, 255, 0.6));
-    background-origin: border-box;
-    background-clip: content-box, border-box;
+  /* This is the grid *inside* .container-sub800 div -> container-sub-parent -> THIS */
+  .container-sub800 .container-sub {
+    gap: 20px;
+    /* padding: 10px; */ /* Moved to card-front/card-back */
+    border-radius: 10px; /* Redundant if card faces have it */
+    display: grid;
+    /* background: var(--background); */ /* Moved to card-front/card-back */
+    grid-template-columns: 1fr; /* Let card-wrapper span full width */
+    /* grid-template-rows: auto; */ /* Let card-wrapper define height */
+    /* The original 100px auto grid was for .container-sub-800 class if it was the content holder.
+       Now, .card-front will manage its internal layout. */
+    position: relative; /* Already has from general .container-sub, but perspective is on .container-sub800 itself */
+    perspective: इन्HERIT; /* Inherit from parent .container-sub800 */
+  }
+
+  /* Styles for the specific grid layout *inside* .card-front for small screens, if needed.
+     The TSX uses a div with class .container-sub-800 (confusingly named) for this. */
+  .card-front .container-sub-800 { /* This is the class name from TSX for the internal grid */
+    display: grid;
+    grid-template-columns: 100px auto; /* Image | Title/Rest */
+    grid-template-rows: 100px auto;    /* Image | Description part of Title/Rest */
+    gap: 10px; /* Adjust gap as needed */
+    align-items: start; /* Align items to the start of their grid area */
+  }
+
+  .container-sub800 .image-container {
+    width: 100px; /* Specific for small screens */
+    height: 100px; /* Specific for small screens */
+  }
+
+  .container-sub800 .content-image { /* Already correctly sized by .content-image */
+    /* width: 100px; */
+    /* height: 100px; */
   }
 
   .github-link {
     display: none;
   }
 
-  .container-sub-800 {
-    gap: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    display: grid;
-    background: var(--background);
-    grid-template-columns: 100px auto;
-    grid-template-rows: 100px auto;
+  /* Duplicate .container-sub-800 rule, remove one */
+  /* .container-sub-800 { ... } */
+
+  .content-image { /* This is a general rule, specific size is handled by parent .image-container if needed */
+    width: 100%; /* Make image fill its container (.image-container) */
+    height: 100%; /* Make image fill its container (.image-container) */
+  }
+}
+
+/* Card Flip Styles */
+.card-wrapper {
+  width: 100%;
+  /* height: 100%; */ /* Removed to allow content to define height */
+  position: relative;
+  transform-style: preserve-3d; /* For 3D transformations of children */
+  /* perspective: 1000px; */ /* Moved to parent .container-sub */
+}
+
+.card-front {
+  /* position: absolute; */ /* Removed, now part of normal flow */
+  width: 100%;
+  /* height: 100%; */ /* Removed, content defines height */
+  backface-visibility: hidden;
+  transition: transform 0.7s ease-in-out;
+  background: var(--background);
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row; /* Default to row for two-column layout */
+  align-items: flex-start; /* Align items (image, content div) to the top */
+  gap: 20px; /* Gap between image and content div */
+  transform: rotateY(0deg);
+  z-index: 2;
+  position: relative; /* For absolute positioning of the flip button */
+}
+
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%; /* Takes height of card-wrapper (defined by card-front) */
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transition: transform 0.7s ease-in-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.03)), var(--background);
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; /* To stack "no video" and button if needed */
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg) translateX(100%);
+  z-index: 1;
+}
+
+/* .card-back transform and z-index are correctly defined above */
+
+.card-wrapper.is-flipped .card-front {
+  transform: rotateY(-180deg) translateX(-100%);
+  z-index: 1;
+}
+
+.card-wrapper.is-flipped .card-back {
+  transform: rotateY(0deg) translateX(0%);
+  z-index: 2;
+}
+
+/* Button Styles */
+.flip-button,
+.back-button {
+  padding: 8px 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 3;
+  font-family: var(--main-font);
+}
+
+.flip-button {
+  position: absolute; /* Default for large screens */
+  bottom: 20px;
+  right: 20px;
+  /* align-self: flex-end; */ /* Removed */
+  /* margin-top: auto; */ /* Removed */
+}
+
+.back-button {
+  /* top: 15px; */   /* Removed */
+  /* right: 15px; */  /* Removed */
+   margin-top: 15px; /* Add some space if content above it */
+}
+
+.flip-button:hover,
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Ensure .content elements are positioned correctly within .card-front */
+.card-front .content {
+  /* width: 100%; */ /* Removed, flex:1 handles width in row, media query handles for column */
+  /* height: 100%; */ /* Removed, content defines height */
+}
+
+@media screen and (max-width: 860px) {
+  /* .container-sub rule for small screens (grid-template-columns: 1fr) is already defined above */
+  .card-front {
+    flex-direction: column; /* Revert to column for small screens */
+    gap: 15px; /* Restore column gap */
+    /* position: relative; */ /* Can remain or be removed if static button doesn't need it */
   }
 
-  .content-image {
-    width: 100px;
-    height: 100px;
+  .card-front .content {
+    flex: none; /* Reset flex property */
+    width: 100%; /* Ensure content takes full width in column layout */
+  }
+
+  .flip-button {
+    position: static; /* Revert to static positioning */
+    align-self: flex-end; /* Position in flex column */
+    margin-top: auto; /* Push to bottom */
+  }
+
+  .container-sub800 .container-sub .card-wrapper { /* More specific selector */
+    grid-column: 1 / -1; /* card-wrapper spans the single column grid */
+  }
+
+  /* The perspective for .container-sub800 .container-sub was changed to inherit.
+     The main perspective is on .container-sub800 (the flex container)
+     and .container-sub (the grid container for large screens).
+     This ensures the direct parent of card-wrapper has perspective.
+     For small screens, .container-sub800 .container-sub is the parent of card-wrapper.
+     It was already set to position: relative and perspective: 1000px in the previous media query block.
+     Let's ensure that is the primary one.
+  */
+  .container-sub800 .container-sub {
+     /* background: transparent; */ /* Already set */
+     /* padding: 0; */ /* Already set */
+     /* perspective: 1000px; */ /* This should be the active perspective for this path */
   }
 }
