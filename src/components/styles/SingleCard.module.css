@@ -306,4 +306,27 @@
      /* padding: 0; */ /* Already set */
      /* perspective: 1000px; */ /* This should be the active perspective for this path */
   }
+
+  .corner-flip-trigger {
+    border-bottom-width: 30px;
+    border-left-width: 30px;
+  }
+}
+
+/* New styles for the clickable corner */
+.corner-flip-trigger {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid rgba(0, 123, 255, 0.7); /* Placeholder blue */
+  border-left: 50px solid transparent;
+  cursor: pointer;
+  transition: border-bottom-color 0.3s ease;
+  z-index: 4; /* Above card content, below modals etc. */
+}
+
+.corner-flip-trigger:hover {
+  border-bottom-color: rgba(0, 86, 179, 0.9); /* Darker placeholder blue on hover */
 }

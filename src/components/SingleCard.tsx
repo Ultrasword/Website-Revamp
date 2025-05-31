@@ -101,10 +101,9 @@ export function SingleCard({
                     </ul>
                   </div>
                 </div>
+                {/* Flip button removed */}
                 {!isFlipped && (
-                  <button onClick={handleFlip} className={styles['flip-button']}>
-                    Flip
-                  </button>
+                  <div className={styles['corner-flip-trigger']} onClick={handleFlip} />
                 )}
               </div>
 
@@ -156,10 +155,9 @@ export function SingleCard({
                   </div>
                 </div>
                 {index % 2 === 0 && createImageObject(image, "end", github)}
+                {/* Flip button removed */}
                 {!isFlipped && (
-                  <button onClick={handleFlip} className={styles['flip-button']}>
-                    Flip
-                  </button>
+                  <div className={styles['corner-flip-trigger']} onClick={handleFlip} />
                 )}
               </div>
 
