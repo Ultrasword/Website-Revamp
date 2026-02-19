@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 100%; Removed to respect section-container width */
+  /* padding: 50px 0; Reduced padding */
+}
+
+.content {
+  width: 100%;
+  /* max-width: 1200px; Removed to match other sections */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.calendarContainer {
+  background: rgba(255, 255, 255, 0.05); /* Subtle background for calendar */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto; /* Allow overflow */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.calendarContainer svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.projectsContainer {
+  width: 100%;
+}

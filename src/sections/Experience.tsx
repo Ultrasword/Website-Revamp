@@ -8,46 +8,46 @@ import { ExperienceCard, Experience } from "@/components/ExperienceCard";
 export default function ExperienceSection() {
   const experiences: Experience[] = [
     {
-      position: "Software Developer in Test",
+      position: "Software Developer - Star Labs",
+      company: "Vidyard",
+      location: "Remote", // Assumed remote based on context, can be updated
+      startDate: "May 2025", // Assumed based on QNX end date
+      endDate: "Present",
+      current: true,
+      description: [
+        "Engineered a cross-service RBAC system (Ruby on Rails, Bun/TypeScript) for 30k+ users, unlocking Fortune 500 compliance and enterprise-tier adoption.",
+        "Led a 3-developer squad to deliver the AI Video Backgrounds feature in 5 weeks, owning the full SDLC from systems design, project administrative tasks, to production deployment.",
+        "Reduced media rendering failures by optimizing AWS Lambda timeouts and configuring Datadog alerts for the video generation pipeline.",
+        "Enforced data integrity across HubSpot/Zapier integrations by implementing granular permission scopes within the microservices architecture.",
+      ],
+      companyLogo: "/experiences/vidyard.png", // Placeholder
+    },
+    {
+      position: "Software Developer in Test - Graphics Testing Team",
       company: "QNX",
       location: "Ottawa, ON",
       startDate: "Jan 2025",
       endDate: "Apr 2025",
-      current: true,
+      current: false,
       description: [
-        "Designed and implemented an Image Codec automation job (in Jenkins) consisting of 143 integration & unit tests using Shellscript and Python (pytest) on all 4 QNX operating system versions - automated 572 total tests in 2 weeks in Linux.",
-        "Wrote Dockerfile specification to replicate test environment conditions for consistent integration and unit test results.",
-        "Currently working on automating 30% of smoke, regression, and unit tests using pytest in Python and bash.",
-        "Developed an internal test results parsing automation in Python and Flask for simple test result visualization.",
+        "Automated 500+ weekly codec regression tests across RTOS targets by engineering a Jenkins CI/CD pipeline.",
+        "Eliminated configuration drift by containerizing test environments with Docker for reproducible testing setups.",
+        "Validated 4 major OS releases by designing regression suites that caught critical graphics driver defects.",
       ],
       companyLogo: "/experiences/qnx.png",
     },
     {
-      position: "Software Developer Intern",
+      position: "Software Developer - Cryptographic Security Team",
       company: "Blackberry",
       location: "Waterloo, ON",
       startDate: "May 2024",
       endDate: "Aug 2024",
       current: false,
       description: [
-        "Collaborated in daily scrum standups and sprint retrospectives and wrote docs for development environment setup.",
-        "Performed manual development tasks by merging SVN commits from a legacy framework to a modernized UI framework by debugging, refactoring, and conducting lab-based tests and verification of feature functionality of the application.",
-        "Developed a “Batch Request” in Typescript and Java following an MVC design pattern to dynamically cache frontend interactions (cryptographic key generation, system logs, etc.) into a PostgreSQL database — leveraging cryptographic design principles acquired through an internal course.",
+        "Designed a high-throughput \"Batch Request\" system in Java/TypeScript (MVC), implementing a caching layer to optimize cryptographic key generation, building new components, and verifying via manual testing.",
+        "Worked with clients to modernize legacy security tooling by migrating SVN codebase to a Vaadin23 (modern java fullstack framework) significantly improving maintainability and performance in our proprietary software.",
       ],
       companyLogo: "/experiences/blackberry.png",
-    },
-    {
-      position: "Java/Web/CAD Teacher",
-      company: "ACCN",
-      location: "Scarborough, ON",
-      startDate: "May 2023",
-      endDate: "Aug 2023",
-      current: false,
-      description: [
-        "Led 3 team members to build and design 2 months worth of educational content for 2 cohorts of 40 students — ages 10 - 16 — on Java, Web Development, and CAD principles.",
-        "Shared personal knowledge on Java Design Features (Object Oriented Programming, Syntax, Functional Modules), Robotics Software Development Principles (Odometry, etc), and Web Development (HTML/CSS, JS) ",
-      ],
-      companyLogo: "/experiences/accn.png",
     },
   ] as Experience[];
 

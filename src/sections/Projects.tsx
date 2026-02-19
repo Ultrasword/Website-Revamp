@@ -7,28 +7,26 @@ import { SingleCard, SingleCardProps } from "@/components/SingleCard";
 
 const cardProps = [
   {
-    title: "WhisperCore -- Real-Time Speech To Text Engine",
+    title: "Echo - Discord Transcription Chatbot",
     description: [
-      "A real-time STT full-stack app using Whisper.cpp on Mac M2 with CoreML Acceleration (70x faster than Whisper).",
-      "Built React/NextJS frontend with Flask/SocketIO backend for seamless audio processing and low-latency transcription.",
-      "Created multithreaded backend that processes audio streams concurrently with thread-safe data structures for audio buffer management and MIME type conversion with ffmpeg.",
+      "Arbitrated VRAM access between Whisper and Ollama by engineering a custom GPU Resource Manager using asyncio semaphores.",
+      "Orchestrated non-blocking audio transcoding and vector embedding via a custom event-driven job queue pipeline.",
+      "Enabled hardware-agnostic testing of GPU workflows by implementing Dependency Injection to decouple the Discord gateway from agentic logic.",
     ],
-    image: "/projects/whispercore.png",
-    tags: ["Python", "Flask", "SocketIO", "React", "Next.js", "Typescript"],
-    github: "https://github.com/Peter-Dated-Projects/04-13-2025_speech-to-text-mac",
+    image: "/projects/echo.png", // Placeholder
+    tags: ["Python", "AsyncIO", "Whisper", "Ollama", "Discord.py", "Docker"],
+    github: "https://github.com/Peter-Dated-Projects/2025-09-15_discord-meeting-transcriptor",
   },
   {
-    title: "Boids Simulation -- Accelerated with Bounding Volume Hierarchy",
+    title: "StudyGarden - Digital Group Study App",
     description: [
-      "Implemented a Boids Simulation in Python using pygame.",
-      "The simulation uses a custom built physics engine to simulate flocking behaviour.",
-      "I also implemented a Bounding Volume Hierarchy (BVH) to accelerate the simulation by an average of 500%.",
-      "BVH = a tree structure that divides the simulation space into smaller regions, allowing for faster collision detection and rendering.",
+      "Scaled a real-time WebSocket backend to 200+ concurrent connections on Cloud Run, utilizing Redis for sub-millisecond state synchronization.",
+      "Engineered a reactive data layer using TanStack Query and a custom Notion API wrapper to handle complex filtering and real-time live client updates for task syncing.",
+      "Streamlined deployment on Google Cloud Platform via containerization of an asyncio python server, arangodb, and postgres using a docker-compose script in a GCP Virtual Machine.",
     ],
-    image: "/projects/boids.gif",
-    tags: ["python", "pygame", "Github"],
-    github:
-      "https://github.com/Peter-Dated-Projects/03-31-2025_bounding-volume-hierarachy-but-its-2d-for-now",
+    image: "/projects/studygarden.png", // Placeholder
+    tags: ["React", "TypeScript", "Python", "GCP", "Redis", "WebSocket", "TanStack Query"],
+    github: "https://github.com/Peter-Dated-Projects/2025-08-18_group-study-idle-app",
   },
   {
     title: "Daily Vibez - cuHacking Submission",

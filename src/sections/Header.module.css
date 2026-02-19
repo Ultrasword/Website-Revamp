@@ -1,0 +1,36 @@
+
+.header {
+    display: flex;
+    flex-direction: column;
+    /* background: lightblue; */
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: vertical;
+    /* align-items: center; */
+    /* justify-content: center; */
+    align-items: left;
+    justify-content: left;
+    
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px 32px;
+}
+
+.nav {
+    display: flex;
+    gap: 16px;
+
+    list-style: none;
+}
+
+.nav > li {
+    text-decoration: none;
+    color: black;
+    font-weight: 80px;
+}

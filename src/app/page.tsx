@@ -7,6 +7,7 @@ import AboutSection from "@/sections/About";
 import HeroSection from "@/sections/Hero";
 import ExperienceSection from "@/sections/Experience";
 import SkillsSection from "@/sections/Projects";
+import GitHubSection from "@/sections/GitHub";
 import { Footer } from "@/sections/Footer";
 
 import ConwaysGameofLife from "@/components/ConwaysGameofLife";
@@ -23,11 +24,11 @@ export default function Home() {
         <main className={styles.main}>
           <AboutSection />
           <ExperienceSection />
-          <div style={{ height: "100px" }}></div>
           <div style={{ height: "100px", justifyContent: "center", display: "flex" }}>
             <MovingArrow targetSectionTitle={"Skills"} />
           </div>
           <SkillsSection />
+          <GitHubSection />
         </main>
 
         <div id="ConwaySim" className={styles["conway-sim-container"]}>

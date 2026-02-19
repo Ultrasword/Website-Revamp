@@ -1,5 +1,5 @@
 import styles from "./styles/SingleCard.module.css";
-import { useState } from "react";
+
 import Image from "next/image";
 
 export interface SingleCardProps {
@@ -54,125 +54,74 @@ export function SingleCard({
   tags,
   github,
 }: { index: number } & SingleCardProps) {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const handleFlip = () => {
-    setIsFlipped(true);
-  };
-
-  const handleUnflip = () => {
-    setIsFlipped(false);
-  };
-
   return (
     <div>
-      {/* Layout for smaller screens */}
       <div className={styles["container-sub800"]}>
         <div className={styles["container-sub-parent"]}>
-          {/* styles["container-sub"] is the one with perspective in CSS for this viewport */}
           <div className={styles["container-sub"]}>
-            <div className={`${styles['card-wrapper']} ${isFlipped ? styles['is-flipped'] : ''}`}>
-              {/* Front of the card */}
-              <div className={styles['card-front']}>
-                {/* Content for the front */}
-                <div className={styles["content"]}> {/* Existing content div, now part of card-front */}
-                  <div className={styles["container-sub-800"]}> {/* This is the grid for image and title */}
-                    <div>{createImageObject(image, "start", github)}</div>
-                    <div>
-                      <h2 className={styles["card-title"]}>{title}</h2>
-                    </div>
-                  </div>
-                  <div className={styles["card-tags"]}>
-                    {tags.map((tag, i) => (
-                      <span key={i} className={styles["card-tag"]}>
-                        <span className={`text-gradient-mask-p1`}>{`#${tag}`}</span>
-                      </span>
-                    ))}
-                  </div>
-                  <div className={styles["card-description-container"]}>
-                    <ul>
-                      {description.map((line, i) => (
-                        <li
-                          key={i}
-                          className={styles["card-description"]}
-                          dangerouslySetInnerHTML={{ __html: line }}
-                        />
-                      ))}
-                    </ul>
-                  </div>
+            <div className={styles["content"]}>
+              <div className={styles["container-sub-800"]}>
+                <div>{createImageObject(image, "start", github)}</div>
+                <div>
+                  <h2 className={styles["card-title"]}>{title}</h2>
                 </div>
-                {!isFlipped && (
-                  <button onClick={handleFlip} className={styles['flip-button']}>
-                    Flip
-                  </button>
-                )}
               </div>
-
-              {/* Back of the card */}
-              <div className={styles['card-back']}>
-                <div>no video attached</div>
-                {isFlipped && (
-                  <button onClick={handleUnflip} className={styles['back-button']}>
-                    Back
-                  </button>
-                )}
+              <div className={styles["card-tags"]}>
+                {tags.map((tag, index) => (
+                  <span key={index} className={styles["card-tag"]}>
+                    <span className={`text-gradient-mask-p1`}>{`#${tag}`}</span>
+                  </span>
+                ))}
+              </div>
+              <div className={styles["card-description-container"]}>
+                <ul>
+                  {description.map((line, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className={styles["card-description"]}
+                        dangerouslySetInnerHTML={{ __html: line }}
+                      />
+                    );
+                  })}
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Layout for larger screens */}
-      <div className={styles[`container-${index % 2 === 0 ? "a" : "b"}`]}>
+      <div className={styles[`container-${index % 2 == 0 ? "a" : "b"}`]}>
         <div className={styles["container-sub-parent"]}>
-          {/* styles["container-sub"] is the one with perspective in CSS for this viewport */}
           <div className={styles["container-sub"]}>
-            <div className={`${styles['card-wrapper']} ${isFlipped ? styles['is-flipped'] : ''}`}>
-              {/* Front of the card */}
-              <div className={styles['card-front']}>
-                {/* Conditional rendering for image placement based on index */}
-                {index % 2 !== 0 && createImageObject(image, "start", github)}
-                <div className={styles["content"]}> {/* Existing content div, now part of card-front */}
-                  <div>
-                    <h2 className={styles["card-title"]}>{title}</h2>
-                  </div>
-                  <div className={styles["card-tags"]}>
-                    {tags.map((tag, i) => (
-                      <span key={i} className={styles["card-tag"]}>
-                        <span className={`text-gradient-mask-p1`}>{`#${tag}`}</span>
-                      </span>
-                    ))}
-                  </div>
-                  <div className={styles["card-description-container"]}>
-                    <ul>
-                      {description.map((line, i) => (
-                        <li
-                          key={i}
-                          className={styles["card-description"]}
-                          dangerouslySetInnerHTML={{ __html: line }}
-                        />
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                {index % 2 === 0 && createImageObject(image, "end", github)}
-                {!isFlipped && (
-                  <button onClick={handleFlip} className={styles['flip-button']}>
-                    Flip
-                  </button>
-                )}
-              </div>
+            {index % 2 != 0 ? createImageObject(image, "start", github) : ""}
 
-              {/* Back of the card */}
-              <div className={styles['card-back']}>
-                <div>no video attached</div>
-                {isFlipped && (
-                  <button onClick={handleUnflip} className={styles['back-button']}>
-                    Back
-                  </button>
-                )}
+            <div className={styles["content"]}>
+              <div>
+                <h2 className={styles["card-title"]}>{title}</h2>
+              </div>
+              <div className={styles["card-tags"]}>
+                {tags.map((tag, index) => (
+                  <span key={index} className={styles["card-tag"]}>
+                    <span className={`text-gradient-mask-p1`}>{`#${tag}`}</span>
+                  </span>
+                ))}
+              </div>
+              <div className={styles["card-description-container"]}>
+                <ul>
+                  {description.map((line, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className={styles["card-description"]}
+                        dangerouslySetInnerHTML={{ __html: line }}
+                      />
+                    );
+                  })}
+                </ul>
               </div>
             </div>
+
+            {index % 2 == 0 ? createImageObject(image, "end", github) : ""}
           </div>
         </div>
       </div>

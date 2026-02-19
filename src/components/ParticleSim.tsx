@@ -16,25 +16,20 @@ interface Particle {
 const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  let canvas = canvasRef.current;
   useEffect(() => {
-    canvas = canvasRef.current;
-  }, [canvasRef]);
-
-  // Set the canvas dimensions to match the container or viewport
-  const setCanvasSize = () => {
-    if (!canvas) return;
-    const parent = canvas.parentElement;
-    if (parent) {
-      canvas.width = parent.clientWidth;
-      canvas.height = parent.clientHeight;
-    }
-  };
-
-  useEffect(() => {
+    const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    // Set the canvas dimensions to match the container or viewport
+    const setCanvasSize = () => {
+      const parent = canvas.parentElement;
+      if (parent) {
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+      }
+    };
 
     let animationFrameId: number;
     const particles: Particle[] = [];
@@ -121,7 +116,7 @@ const ParticleBackground: React.FC = () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
     };
-  }, [canvas, setCanvasSize]);
+  }, []);
 
   return (
     <canvas

@@ -8,6 +8,10 @@ body {
   scrollbar-width: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: var(--foreground);
   background-color: var(--background);

@@ -1,5 +1,6 @@
 import styles from "./styles/ExperienceCard.module.css";
 import Image from "next/image";
+import { useState } from "react";
 
 export interface Experience {
   index: number;
@@ -24,8 +25,14 @@ export function ExperienceCard({
   description,
   companyLogo,
 }: Experience) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
-    <div className={styles[`container-${index % 2 == 0 ? "a" : "b"}`]}>
+    <div 
+      className={styles[`container-${index % 2 == 0 ? "a" : "b"}`]}
+      onClick={() => setIsExpanded(!isExpanded)}
+      style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+    >
       <div className={styles["container-sub-parent"]}>
         <div className={styles["experience-viewer-item"]}>
           <div
@@ -33,72 +40,61 @@ export function ExperienceCard({
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               padding: "10px",
+              alignItems: "center",
             }}
           >
-            <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-              <div style={{ width: "50px" }}>
-                <Image src={companyLogo} alt={company} width={50} height={50} />
+            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <div style={{ width: "50px", height: "50px", flexShrink: 0 }}>
+                <Image 
+                  src={companyLogo} 
+                  alt={company} 
+                  width={50} 
+                  height={50} 
+                  style={{ borderRadius: "50%" }}
+                />
               </div>
-              <div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
                 <p
                   style={{
                     fontWeight: "bold",
                     fontSize: "20px",
                     fontFamily: "var(--fancy-font)",
+                    marginBottom: "0",
+                    lineHeight: "1.2",
                   }}
                 >
                   {company}
                 </p>
-              </div>
-            </div>
-            <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "flex-end" }}>
-              <p style={{ textAlign: "right" }}>{location}</p>
-            </div>
-            <div>
-              <p style={{ fontSize: "13px", fontFamily: "var(--subtitle-font)" }}>{position}</p>
-            </div>
-
-            {current ? (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "right",
-                  fontSize: "small",
-                  alignContent: "center",
-                }}
-              >
-                Current
-              </div>
-            ) : (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "right",
-                  fontSize: "small",
-                }}
-              >
-                <p>{startDate}</p>
-                <p style={{ display: "flex", alignItems: "center" }}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    width="16px"
-                    height="16px"
-                  >
-                    <path d="M10 17l5-5-5-5v10z" />
-                  </svg>
+                <p style={{ fontSize: "14px", fontFamily: "var(--subtitle-font)", margin: 0, opacity: 0.8 }}>
+                  {position}
                 </p>
-                <p>{endDate}</p>
               </div>
-            )}
+            </div>
+            
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", justifyContent: "center" }}>
+               <div style={{ fontSize: "12px", opacity: 0.7, marginBottom: "4px" }}>
+                  {startDate} - {current ? "Present" : endDate}
+               </div>
+               <div style={{ fontSize: "12px", opacity: 0.7 }}>
+                  {location}
+               </div>
+               <div style={{ marginTop: "5px", fontSize: "10px", opacity: 0.5 }}>
+                 {isExpanded ? "Click to collapse" : "Click to expand"}
+               </div>
+            </div>
           </div>
+
           <div
             className={styles["experience-viewer-description-container"]}
             style={{
-              border: "1px solid rgba(255, 255, 255, 0.2)",
+              maxHeight: isExpanded ? "1000px" : "0",
+              opacity: isExpanded ? 1 : 0,
+              overflow: "hidden",
+              transition: "all 0.5s ease-in-out",
+              border: isExpanded ? "1px solid rgba(255, 255, 255, 0.2)" : "none",
+              marginTop: isExpanded ? "10px" : "0",
+              padding: isExpanded ? "10px" : "0",
               borderRadius: "5px",
-              marginRight: "5px",
             }}
           >
             <ul className={styles["experience-viewer-description-list"]}>
